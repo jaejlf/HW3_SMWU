@@ -1,4 +1,4 @@
-//간e단한 Input 받기 및 제출 시 Alert출력
+//간단한 Input 받기 및 제출 시 Alert출력
 
 import React from 'react';
 import { SafeAreaView, TouchableHighlight, TouchableOpacity, Button, Alert, Text, TextInput, StyleSheet, Dimensions } from 'react-native';

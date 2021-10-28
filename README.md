@@ -15,3 +15,6 @@
 ## Mobile Software
 - #### calculator
   > ##### 계산기 숫자 입력 애플리케이션 (0~9 입력 및 Clear 기능)
+
+- #### exer_mode
+  > ##### dark/light mode, context

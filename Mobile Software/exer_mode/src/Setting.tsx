@@ -1,4 +1,3 @@
-//잘되는 세팅
 import React, { useState } from 'react';
 import { View, StyleSheet, Text, Switch, TouchableOpacity } from "react-native";
 import { useTheme } from "react-native-paper";

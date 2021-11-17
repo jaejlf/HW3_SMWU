@@ -2,6 +2,7 @@
 
 + [Algorithm](#algorithm)
 + [Moblie Software](#mobile-software)
++ [Clean Code - with Java](#clean-code)
 <br>
 
 ## Algorithm
@@ -18,3 +19,8 @@
 
 - #### exer_mode
   > ##### dark/light mode, context
+<br>
+
+## Clean Code
+- #### Homework1 1
+  > ##### Select a sorting algorithm (Bubble Sort, Quick Sort 알고리즘) 

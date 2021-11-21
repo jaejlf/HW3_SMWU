@@ -7,6 +7,7 @@ class concat{
 private:
 	int num;
 	pri **pa;
+	pri **sorted;
 
 public:
 	concat(void);
@@ -14,7 +15,8 @@ public:
 	~concat(void);
 
 	char* concatenate(void);
-  //void sort(int start, int end);
+  	void merge_sort(int start, int end);
+	void merge(int start, int mid, int end);
 };
 
 #endif

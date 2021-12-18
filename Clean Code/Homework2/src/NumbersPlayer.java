@@ -3,7 +3,7 @@ package Homework2.src;
 interface Printer {
     public void printDefaultMenu();
     public void printAlgorithmSelectionMenu();
-    public void printSortingResult();
+    public void printSortingResult(int[] sorted);
 }
 
 interface Sorter {
@@ -34,20 +34,21 @@ public class NumbersPlayer extends SortArr implements Printer, Sorter {
 
     }
 
-    public void printSortingResult() {
+    public void printSortingResult(int[] sorted) {
 
         System.out.print("Ascending ro descending (a or d) : ");
         String sortingOpt = scanner.nextLine();
         System.out.print("Result : ");
+        
         if(sortingOpt.equals("a")){
-            for (int i = 0; i < numbers.length; i++) {
-                System.out.print(numbers[i] + " ");
+            for (int i = 0; i < sorted.length; i++) {
+                System.out.print(sorted[i] + " ");
             }
             System.out.println();
         }
         else if(sortingOpt.equals("d")){
-            for (int i = numbers.length - 1; i >= 0; i--) {
-                System.out.print(numbers[i] + " ");
+            for (int i = sorted.length - 1; i >= 0; i--) {
+                System.out.print(sorted[i] + " ");
             }
             System.out.println();
         }
@@ -55,17 +56,19 @@ public class NumbersPlayer extends SortArr implements Printer, Sorter {
 
     public void sortNumbersArr(String selectedAlgorithm) {
 
-        getNumbers();
-        changeArrayTypeToInteger();
+        int[] inputArr = getNumbersArr();
+        int[] sorted = inputArr;
 
         if (selectedAlgorithm.equals(BUBBLE)) {
-            sortNumbersUsingBubble();
+            sorted = sortNumbersUsingBubble(inputArr);
 
         } else if (selectedAlgorithm.equals(QUICK)) {
-            sortNumbersUsingQuick(0, numbers.length - 1);
+            sorted = sortNumbersUsingQuick(inputArr, 0, inputArr.length - 1);
 
         } else if(selectedAlgorithm.equals(INSERTION)){
-            sortNumbersUsingInsertion();
+            sorted = sortNumbersUsingInsertion(inputArr);
         }
+
+        printSortingResult(sorted);
     }
 }

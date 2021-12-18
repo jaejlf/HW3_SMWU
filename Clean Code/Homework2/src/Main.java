@@ -21,7 +21,7 @@ public class Main extends NumbersPlayer {
             } else if (menu.equals(SORTING)) {
                 if (!selectedAlgorithm.equals(NOT_SELECTED)) {
                     num.sortNumbersArr(selectedAlgorithm);
-                    num.printSortingResult();
+                    //num.printSortingResult();
 
                 } else {
                     System.out.println("아직 알고리즘을 선택하지 않았습니다.");

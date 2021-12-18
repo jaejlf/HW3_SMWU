@@ -11,6 +11,12 @@
 
 - #### PA2
   > ##### 행렬 E(m X n)의 모든 i, j에 대하여 E[i][j] <= E[i+1][j]와 E[i][j] <= E[i][j+1]을 모두 만족시키게끔 재배열 (Quick Sort 알고리즘)
+
+- #### PA3
+  > ##### 주어진 순서쌍(우선순위, 단어)의 일부만 이용해서 문장 만들기 (Merge Sort 알고리즘)
+
+- #### PA4
+  > ##### n X n 격자에서 한 번 갔던 점을 또다시 방문하지 않는 모든 경로의 수 구하기 (최단거리 X, FIND ALL PATH)
 <br>
 
 ## Mobile Software
@@ -22,5 +28,9 @@
 <br>
 
 ## Clean Code
-- #### Homework1 1
+- #### Homework1
   > ##### Select a sorting algorithm (Bubble Sort, Quick Sort 알고리즘) 
+
+- #### Homework2
+    Develop Homework1 & Unit Test using JUnit5
+    > ##### ; Select a 'ascending' or 'descending' sorting algorithm (Bubble Sort, Quick Sort, Insertion Sort 알고리즘)

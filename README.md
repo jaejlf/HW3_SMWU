@@ -25,6 +25,9 @@
 
 - #### exer_mode
   > ##### dark/light mode, context
+
+- #### Final Project
+  > ##### 반려동물 건강관리 다이어리, 헬시코기 [(go to)](https://github.com/jaejlf/Healthy-Corgi)
 <br>
 
 ## Clean Code

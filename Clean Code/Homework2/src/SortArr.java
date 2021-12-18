@@ -2,12 +2,10 @@ package Homework2.src;
 
 interface Numbers {
     public void getNumbers();
-
     public void changeArrayTypeToInteger();
-
-    public void sortNumbersUsingBubble();
-
-    public void sortNumbersUsingQuick(int start, int end);
+    public int[] sortNumbersUsingBubble();
+    public int[] sortNumbersUsingQuick(int start, int end);
+    public int[] sortNumbersUsingInsertion();
 }
 
 public class SortArr implements Numbers, Constant {
@@ -40,7 +38,7 @@ public class SortArr implements Numbers, Constant {
 
     }
 
-    public void sortNumbersUsingBubble() {
+    public int[] sortNumbersUsingBubble() {
 
         for (int i = 0; i < numbers.length; i++) {
             for (int j = 0; j < numbers.length - i - 1; j++) {
@@ -52,12 +50,14 @@ public class SortArr implements Numbers, Constant {
                 }
             }
         }
+
+        return numbers;
     }
 
-    public void sortNumbersUsingQuick(int start, int end) {
+    public int[] sortNumbersUsingQuick(int start, int end) {
 
         if (start >= end) {
-            return;
+            return numbers;
         }
 
         int i = start - 1;
@@ -79,9 +79,11 @@ public class SortArr implements Numbers, Constant {
         sortNumbersUsingQuick(start, pivot - 1);
         sortNumbersUsingQuick(pivot + 1, end);
 
+        return numbers;
+
     }
 
-    public void sortNumbersUsingInsertion() {
+    public int[] sortNumbersUsingInsertion() {
         for (int i = 1; i < numbers.length; i++) {
             int target = numbers[i];
 
@@ -92,5 +94,7 @@ public class SortArr implements Numbers, Constant {
             }
             numbers[j + 1] = target;
         }
+
+        return numbers;
     }
 }

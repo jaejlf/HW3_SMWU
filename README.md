@@ -36,4 +36,4 @@
 
 - #### Homework2
     Develop Homework1 & Unit Test using JUnit5
-    > ##### Select a 'ascending' or 'descending' sorting algorithm (Bubble Sort, Quick Sort, Insertion Sort 알고리즘)
+    > ##### Select a 'ascending' or 'descending' sorting algorithm (+ Insertion Sort 알고리즘)

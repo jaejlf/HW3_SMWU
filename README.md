@@ -3,6 +3,8 @@
 + [Algorithm](#algorithm)
 + [Moblie Software](#mobile-software)
 + [Clean Code - with Java](#clean-code)
++ [Database Programming](#database-programming)
+
 <br>
 
 ## Algorithm
@@ -37,3 +39,9 @@
 - #### Homework2
     Develop Homework1 & Unit Test using JUnit5
     > ##### Select a 'ascending' or 'descending' sorting algorithm (+ Insertion Sort 알고리즘)
+<br>
+
+## Database Programming
+[Notetaking](https://jaej-sohn.notion.site/d8e9af84dd30441d9b896dc6c92ef06a)
+
+- Lab

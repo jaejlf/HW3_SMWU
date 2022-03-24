@@ -1,0 +1,188 @@
+SQL> show user
+USER is "DB1814798"
+SQL> SELECT * FROM tab;
+
+no rows selected
+
+SQL> get input.txt
+  1  CREATE TABLE STUDENT(
+  2  	s_id NUMBER(6) NOT NULL PRIMARY KEY,
+  3    	s_name VARCHAR2(50),
+  4    	s_grade NUMBER(1),
+  5    	s_uni VARCHAR2(50),
+  6    	s_major VARCHAR2(50)
+  7  );
+  8  CREATE TABLE PROFESSOR(
+  9    	p_id NUMBER(3) NOT NULL PRIMARY KEY,
+ 10    	p_name VARCHAR2(50),
+ 11    	p_uni VARCHAR2(50),
+ 12    	p_major VARCHAR2(50)
+ 13  );
+ 14  CREATE TABLE COURSE(
+ 15    	c_id NUMBER(6) NOT NULL PRIMARY KEY,
+ 16    	c_name VARCHAR2(50)
+ 17  );
+ 18  CREATE TABLE ENROLL(
+ 19    	s_id NUMBER(6) REFERENCES STUDENT(s_id),
+ 20    	c_id NUMBER(6) REFERENCES COURSE(c_id)
+ 21  );
+ 22  CREATE TABLE TEACH(
+ 23    	p_id NUMBER(3) REFERENCES PROFESSOR(p_id),
+ 24    	c_id NUMBER(6) REFERENCES COURSE(c_id)
+ 25  );
+ 26  INSERT INTO STUDENT VALUES(200101, '±è°¡³ª', 1, '¼÷¸í', 'ÄÄ°ú'); 
+ 27  INSERT INTO STUDENT VALUES(200102, 'ÀÌ´Ù¶ó', 2, '¼÷¸í', '¼ÒÀ¶');
+ 28  INSERT INTO STUDENT VALUES(200103, '¹Ú¸¶¹Ù', 2, '¼÷¸í', 'ÄÄ°ú');
+ 29  INSERT INTO STUDENT VALUES(200104, 'ÃÖ»ç¾Æ', 3, '¼÷¸í', 'ÄÄ°ú');
+ 30  INSERT INTO STUDENT VALUES(200105, 'Á¤ÀÚÂ÷', 4, '¼÷¸í', '¼ÒÀ¶');
+ 31  INSERT INTO PROFESSOR VALUES(201, '½ÉÁØÈ£', '¼÷¸í', 'ÄÄ°ú');
+ 32  INSERT INTO PROFESSOR VALUES(202, '¹Ú¿µÈÆ', '¼÷¸í', 'ÄÄ°ú');
+ 33  INSERT INTO PROFESSOR VALUES(203, 'ÃÖÁ¾¿ø', '¼÷¸í', 'ÄÄ°ú'); 
+ 34  INSERT INTO PROFESSOR VALUES(204, '±èÀ±Áø', '¼÷¸í', '¼ÒÀ¶');
+ 35  INSERT INTO PROFESSOR VALUES(205, '¹Ú¼÷¿µ', '¼÷¸í', '¼ÒÀ¶');
+ 36  INSERT INTO PROFESSOR VALUES(206, 'Ã¤ÈñÁØ', '¼÷¸í', '¼ÒÀ¶');
+ 37  INSERT INTO COURSE VALUES(200011, 'µ¥ÀÌÅÍº£ÀÌ½º');
+ 38  INSERT INTO COURSE VALUES(200012, '½Ã½ºÅÛÁ¾ÇÕ¼³°è'); 
+ 39  INSERT INTO COURSE VALUES(200013, 'ÀÎ°øÁö´É');
+ 40  INSERT INTO COURSE VALUES(200014, 'ÄÄÆÄÀÏ·¯'); 
+ 41  INSERT INTO COURSE VALUES(200015, 'ÄÄÇ»ÅÍ³×Æ®¿öÅ©2'); 
+ 42  INSERT INTO COURSE VALUES(200016, 'ÄÄÇ»ÅÍÆ¯°­');
+ 43  INSERT INTO ENROLL VALUES(200101, 200011); 
+ 44  INSERT INTO ENROLL VALUES(200101, 200013); 
+ 45  INSERT INTO ENROLL VALUES(200102, 200013);
+ 46  INSERT INTO ENROLL VALUES(200102, 200014); 
+ 47  INSERT INTO ENROLL VALUES(200103, 200014); 
+ 48  INSERT INTO ENROLL VALUES(200103, 200011);
+ 49  INSERT INTO TEACH VALUES(201, 200012); 
+ 50  INSERT INTO TEACH VALUES(201, 200014); 
+ 51  INSERT INTO TEACH VALUES(202, 200011);
+ 52  INSERT INTO TEACH VALUES(202, 200015);
+ 53* INSERT INTO TEACH VALUES(203, 200013);
+ 54  
+SQL> start input.txt
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+SQL> SELECT * FROM tab;
+
+TNAME                                                        TABTYPE  CLUSTERID 
+------------------------------------------------------------ ------- ---------- 
+COURSE                                                       TABLE              
+ENROLL                                                       TABLE              
+PROFESSOR                                                    TABLE              
+STUDENT                                                      TABLE              
+TEACH                                                        TABLE              
+
+SQL> DESC COURSE
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ C_ID                                      NOT NULL NUMBER(6)
+ C_NAME                                             VARCHAR2(50)
+
+SQL> SELECT s_id, s_major from STUDENT;
+
+      S_ID S_MAJOR                                                              
+---------- --------------------------------------------------                   
+    200101 ÄÄ°ú                                                                 
+    200102 ¼ÒÀ¶                                                                 
+    200103 ÄÄ°ú                                                                 
+    200104 ÄÄ°ú                                                                 
+    200105 ¼ÒÀ¶                                                                 
+
+SQL> spool off;

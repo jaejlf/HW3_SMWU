@@ -1,0 +1,203 @@
+SQL> show user;
+USER is "DB1814798"
+SQL> SELECT s.S_ID,s.S_NAME,s.S_GRADE,s.S_MAJOR FROM STUDENT s
+  2  WHERE s.S_ID IN (
+  3  SELECT e.S_ID FROM ENROLL e
+  4  WHERE e.C_ID = 200011
+  5  );
+
+      S_ID S_NAME                                                S_GRADE S_MAJOR                                                                                 
+---------- -------------------------------------------------- ---------- --------------------------------------------------                                                
+    200101 김가나                                                      1 컴과                                                                                                  
+    200103 박마바                                                      2 컴과      
+                                                                                                                                           
+SQL> SELECT p.P_ID,p.P_NAME,p.P_UNI,p.P_MAJOR FROM PROFESSOR p
+  2  WHERE p.P_ID = (
+  3  SELECT t.P_ID FROM TEACH t
+  4  WHERE t.C_ID = 200013
+  5  );
+
+      P_ID P_NAME                                             P_UNI                                              P_MAJOR                                                
+---------- -------------------------------------------------- -------------------------------------------------- -----------    
+       203 최종원                                             숙명                                               컴과                                                                                                                                                                                                                                                                                                                                               
+SQL> conn scott/ora;
+Connected.
+SQL> show user;
+USER is "SCOTT"
+SQL> 
+SQL> select * from tab;
+
+TNAME                                                     TABTYPE  CLUSTERID                                                                                   
+------------------------------------------------------------ ------- ----------                                                                                                   
+BONUS                                                      TABLE                                                                                                   
+DEPT                                                         TABLE                                                                                                
+EMP                                                          TABLE                                                                                                     
+SALGRADE                                                  TABLE  
+                                                                                                                                                          
+SQL> SELECT * FROM EMP e
+  2  WHERE e.DEPTNO = (
+  3  SELECT MIN(e.DEPTNO) FROM EMP e
+  4  WHERE e.SAL < 1000
+  5  );
+
+     EMPNO ENAME      JOB              MGR HIREDATE        SAL       COMM     DEPTNO 
+---------- ---------- --------- ---------- -------- ---------- ---------- -----------                                                                           
+      7369 SMITH      CLERK           7902 80/12/17        800                    20                                                                                
+      7566 JONES      MANAGER         7839 81/04/02       2975                    20                                                                                   
+      7902 FORD       ANALYST         7566 81/12/03       3000                    20                                                                                                                                                                                                                                                                                                                                                                     
+SQL> SELECT * FROM EMP e
+  2  WHERE e.JOB = 'CLERK' AND e.SAL > ANY(SELECT e.SAL FROM EMP e WHERE JOB = 'SALESMAN');
+
+      EMPNO ENAME      JOB              MGR HIREDATE        SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- -------- ---------- ---------- ----------                                                                                           
+      7934 MILLER     CLERK           7782 82/01/23       1300                    10                                                                               
+
+SQL> select * from emp where sal<ALL(SELECT SAL FROM EMP WHERE JOB='SALESMAN');
+
+     EMPNO ENAME      JOB              MGR HIREDATE        SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- -------- ---------- ---------- ----------                                                                            
+      7900 JAMES      CLERK           7698 81/12/03        950                    30                                                                                
+      7369 SMITH      CLERK           7902 80/12/17        800                    20       
+                                                                                                                           
+SQL> select * from emp where sal>ALL(SELECT SAL FROM EMP WHERE JOB='SALESMAN');
+
+     EMPNO ENAME      JOB              MGR HIREDATE        SAL       COMM     DEPTNO 
+---------- ---------- --------- ---------- -------- ---------- ---------- ----------                                                                          
+      7782 CLARK      MANAGER         7839 81/06/09       2450                    10                                                                                   
+      7698 BLAKE      MANAGER         7839 81/05/01       2850                    30                                                                                
+      7566 JONES      MANAGER         7839 81/04/02       2975                    20                                                                                   
+      7902 FORD       ANALYST         7566 81/12/03       3000                    20                                                                                   
+      7839 KING       PRESIDENT            81/11/17       5000                    10 
+                                                                                                                                  
+SQL> select * from emp where sal<ANY(SELECT SAL FROM EMP WHERE JOB='SALESMAN');
+
+     EMPNO ENAME      JOB              MGR HIREDATE        SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- -------- ---------- ---------- ----------                                                                             
+      7369 SMITH      CLERK           7902 80/12/17        800                    20                                                                                  
+      7900 JAMES      CLERK           7698 81/12/03        950                    30                                                                              
+      7521 WARD       SALESMAN        7698 81/02/22       1250        500         30                                                                                 
+      7654 MARTIN     SALESMAN        7698 81/09/28       1250       1400         30                                                                                     
+      7934 MILLER     CLERK           7782 82/01/23       1300                    10                                                                              
+      7844 TURNER     SALESMAN        7698 81/09/08       1500          0         30   
+                                                                                                                          
+6 rows selected.
+
+SQL> select * from emp where sal>ANY(SELECT SAL FROM EMP WHERE JOB='SALESMAN');
+
+     EMPNO ENAME      JOB              MGR HIREDATE        SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- -------- ---------- ---------- ----------                                                                                 
+      7839 KING       PRESIDENT            81/11/17       5000                    10                                                                              
+      7902 FORD       ANALYST         7566 81/12/03       3000                    20                                                                                   
+      7566 JONES      MANAGER         7839 81/04/02       2975                    20                                                                                  
+      7698 BLAKE      MANAGER         7839 81/05/01       2850                    30                                                                                    
+      7782 CLARK      MANAGER         7839 81/06/09       2450                    10                                                                                     
+      7499 ALLEN      SALESMAN        7698 81/02/20       1600        300         30                                                                                       
+      7844 TURNER     SALESMAN        7698 81/09/08       1500          0         30
+      7934 MILLER     CLERK           7782 82/01/23       1300                    10                                                                                                                                                                                                                                                                                                                                                                       
+8 rows selected.
+
+SQL> conn db1814798/ss2
+Connected.
+SQL> show user;
+USER is "DB1814798"
+SQL> CREATE TABLE BOOK1(
+  2  title varchar2(20) NOT NULL,
+  3  author varchar2(20),
+  4  pub_year varchar2(10));
+
+Table created.
+
+SQL> insert into BOOK1(title, author, pub_year)  values('bookname', 'jaej', '2022');
+
+1 row created.
+
+SQL> CREATE TABLE BOOK2(
+  2  title varchar2(20) PRIMARY KEY,
+  3  author varchar2(20),
+  4  pub_year varchar2(10));
+
+Table created.
+
+SQL> insert into BOOK2(title, author, pub_year)  values('bookname', 'jaej', '2022');
+
+1 row created.
+
+SQL> CREATE TABLE review(
+  2  rev_id number NOT NULL,
+  3  rev_title varchar(20) REFERENCES BOOK2 (TITLE),
+  4  rev_con varchar2(20),
+  5  rev_date varchar2(20)
+  6  );
+
+Table created.
+
+SQL> create table Mybook(
+  2  bookid number,
+  3  price number
+  4  );
+
+Table created.
+
+SQL> insert into Mybook values(1, 10000);
+
+1 row created.
+
+SQL> insert into Mybook values(2, 20000);
+
+1 row created.
+
+SQL> insert into Mybook values(3, NULL);
+
+1 row created.
+
+SQL> SELECT bookid, NVL(price, 0)
+  2  FROM Mybook;
+
+    BOOKID NVL(PRICE,0)                                                                                                                                              
+---------- ------------                                                                                                                                                  
+         1        10000                                                                                                                                                
+         2        20000                                                                                                                                               
+         3            0                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+SQL> SELECT *
+  2  FROM Mybook
+  3  WHERE price IS NULL;
+
+    BOOKID      PRICE                                                                                                                                               
+---------- ----------                                                                                                                                    
+         3         
+                                                                                                                                                                                                                  
+SQL> SELECT *
+  2  FROM Mybook
+  3  WHERE price = '';
+
+no rows selected
+
+SQL> SELECT bookid, price+100
+  2  FROM Mybook;
+
+    BOOKID  PRICE+100                                                                                                                                                   
+---------- ----------                                                                                                                                                  
+         1      10100                                                                                                                                               
+         2      20100                                                                                                                                                    
+         3                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+SQL> SELECT SUM(price), AVG(price), COUNT(*)
+  2  FROM Mybook
+  3  WHERE bookid >= 4;
+
+SUM(PRICE) AVG(PRICE)   COUNT(*)                                                                                                                                           
+---------- ---------- ----------                                                                                                                                        
+                               0                    
+                                                                                                                                                                                 
+SQL>  SELECT COUNT(*), COUNT(price)
+  2  FROM Mybook;
+
+  COUNT(*) COUNT(PRICE)                                                                                                                                                  
+---------- ------------                                                                                                                                              
+         3            2                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+SQL> SELECT SUM(price), AVG(price)
+  2  FROM Mybook;
+
+SUM(PRICE) AVG(PRICE)                                                                                                                                                      
+---------- ----------                                                                                                                                                
+     30000      15000                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+SQL> spool off;

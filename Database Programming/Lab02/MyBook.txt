@@ -1,0 +1,8 @@
+create table Mybook(
+bookid number,
+price number
+);
+
+insert into Mybook values(1, 10000);
+insert into Mybook values(2, 20000);
+insert into Mybook values(3, NULL);

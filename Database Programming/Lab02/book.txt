@@ -1,0 +1,7 @@
+CREATE TABLE book(
+title varchar2(20),
+author varchar2(20),
+pub_year varchar2(10),
+);
+
+insert into book values('db', 'shim', '2020');

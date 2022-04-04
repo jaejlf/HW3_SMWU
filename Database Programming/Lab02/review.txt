@@ -1,0 +1,6 @@
+CREATE TABLE review(
+rev_id number ~,
+rev_title varchar(20) ~,
+rev_con varchar2(20),
+rev_date varchar2(20)
+);

@@ -1,0 +1,95 @@
+SQL> show user;
+USER is "DB1814798"
+SQL> SELECT A.CONSTRAINT_NAME, B.CONSTRAINT_TYPE, A.TABLE_NAME, A.COLUMN_NAME
+  2  FROM user_cons_columns A, user_constraints B
+  3  WHERE A.TABLE_NAME = B.TABLE_NAME AND A.TABLE_NAME = 'BOOK1';
+
+CONSTRAINT_NAME                                              C                  
+------------------------------------------------------------ -                  
+TABLE_NAME                                                                      
+------------------------------------------------------------                    
+COLUMN_NAME                                                                     
+--------------------------------------------------------------------------------
+SYS_C007027                                                  C                  
+BOOK1                                                                           
+TITLE            
+
+SQL> CREATE TABLE BOOKLIST (
+  2  bookid number,
+  3  bookname varchar(30),
+  4  publisher varchar(20),
+  5  price number
+  6  );
+
+Table created.
+
+SQL> INSERT INTO BOOKLIST VALUES (1, '축구의 역사', '굿스포츠', 7000);
+
+1 row created.
+
+SQL> INSERT INTO BOOKLIST VALUES (2, '축구 아는 여자', '나무수', 13000);
+
+1 row created.
+
+SQL> INSERT INTO BOOKLIST VALUES (3, '축구의 이해', '대한미디어', 2200);
+
+1 row created.
+
+SQL> INSERT INTO BOOKLIST VALUES (4, '골프 바이블', '대한미디어', 35000);
+
+1 row created.
+
+SQL> INSERT INTO BOOKLIST VALUES (5, '피겨 교본', '굿스포츠', 8000);
+
+1 row created.
+
+SQL> INSERT INTO BOOKLIST VALUES (6, '역도 단계별 기술', '굿스포츠', 6000);
+
+1 row created.
+
+SQL> INSERT INTO BOOKLIST VALUES (7, '야구의 추억', '이상미디어', 20000);
+
+1 row created.
+
+SQL> INSERT INTO BOOKLIST VALUES (8, '야구를 부탁해', '이상미디어', 13000);
+
+1 row created.
+
+SQL> show user;
+USER is "DB1814798"
+SQL> SELECT replace(BOOKNAME, '야구', '피구') title
+  2  FROM BOOKLIST
+  3  WHERE substr(BOOKNAME, 0, 2) = '야구';
+
+TITLE                                                                                               
+----------------------------------------------------------------------------------------------------
+피구의 추억                                                                                         
+피구를 부탁해                                                                                       
+
+SQL> show user;
+USER is "DB1814798"
+SQL> SELECT BOOKNAME 제목, length(BOOKNAME) 글자수
+  2  FROM BOOKLIST
+  3  WHERE PUBLISHER = '굿스포츠';
+
+제목                               글자수                                                           
+------------------------------ ----------                                                           
+축구의 역사                             6                                                           
+피겨 교본                               5                                                           
+역도 단계별 기술                        9                                                           
+
+SQL> show user;
+USER is "DB1814798"
+SQL> SELECT 종목, count(종목) 개수
+  2  FROM (SELECT substr(BOOKNAME, 0, 2) 종목 FROM BOOKLIST)
+  3  GROUP BY 종목;
+
+종목       개수                                                                                     
+---- ----------                                                                                     
+역도          1                                                                                     
+골프          1                                                                                     
+야구          2                                                                                     
+피겨          1                                                                                     
+축구          3                                                                                     
+
+SQL> spool off;

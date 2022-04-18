@@ -1,0 +1,106 @@
+SQL> SELECT RPAD(LPAD('Happy Wendnesday!', 22, '*'), 27, '*') "LPAD_RPAD"
+  2  FROM Dual;
+
+LPAD_RPAD                                                                       
+---------------------------                                                     
+*****Happy Wendnesday!*****                                                     
+
+SQL> SELECT SUBSTR('즐거운 데이터베이스', 3, 4) "SUBSTR", SUBSTRB('즐거운 데이터베이스', 5, 8) "SUBSTRB"
+  2  FROM Dual;
+
+SUBSTR  SUBSTRB                                                                 
+------- --------                                                                
+운 데이 운 데이                                                                 
+
+SQL> SELECT LTRIM(RTRIM('  Oh!  Oracle  !  ', ' '), ' ') "LTRIM_RTRIM"
+  2  FROM Dual;
+
+LTRIM_RTRIM                                                                     
+--------------                                                                  
+Oh!  Oracle  !                                                              
+
+SQL> SELECT CEIL(72.001), CEIL(-72.001)
+  2  FROM Dual;
+
+CEIL(72.001) CEIL(-72.001)                                                      
+------------ -------------                                                      
+          73           -72                                                      
+
+SQL> SELECT POWER(3, 0.5) "ROOT 3"
+  2  FROM Dual;
+
+    ROOT 3                                                                      
+----------                                                                      
+1.73205081                                                                      
+
+SQL> SELECT ROUND(789.0305, 3) "ROUND"
+  2  FROM Dual;
+
+     ROUND                                                                      
+----------                                                                      
+   789.031                                                                      
+
+SQL> SELECT RTRIM('Page 1', '1') "RTRIM"
+  2  From Dual;
+
+RTRIM                                                                           
+-----                                                                           
+Page                                                                            
+
+SQL> SELECT TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') "1) 1814798"
+  2  FROM Dual;
+
+1) 1814798                                                                      
+-----------------                                                               
+22/04/17 01:01:43                                                               
+
+SQL> SELECT SYSDATE "2) 1814798"
+  2  FROM Dual;
+
+2) 18147                                                                        
+--------                                                                        
+22/04/17                                                                        
+
+SQL> SELECT ADD_MONTHS(TO_DATE('220411', 'YYMMDD'), 1) "3) 1814798"
+  2  FROM Dual;
+
+3) 18147                                                                        
+--------                                                                        
+22/05/11                                                                        
+
+SQL> SELECT LAST_DAY(SYSDATE) "4) 1814798"
+  2  From Dual;
+
+4) 18147                                                                        
+--------                                                                        
+22/04/30                                                                        
+
+SQL> SELECT NEXT_DAY(SYSDATE, 3) "5) 1814798"
+  2  From Dual;
+
+5) 18147                                                                        
+--------                                                                        
+22/04/19                                                                        
+
+SQL> SELECT TO_CHAR(SYSDATE, 'YYYY-MM-DD') "6) 1814798"
+  2  From Dual;
+
+6) 1814798                                                                      
+----------                                                                      
+2022-04-17                                                                      
+
+SQL> SELECT TO_CHAR(123, '999.99') "7) 1814798"
+  2  From Dual;
+
+7) 1814                                                                         
+-------                                                                         
+ 123.00                                                                         
+
+SQL> SELECT TO_DATE('01 04 2021', 'DD MM YYYY') "8) 1814798"
+  2  From Dual;
+
+8) 18147                                                                        
+--------                                                                        
+21/04/01                                                                        
+
+SQL> spool off

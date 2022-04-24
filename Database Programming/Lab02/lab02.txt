@@ -9,8 +9,8 @@ SQL> SELECT S.s_id, S.s_name, S.s_grade, S.s_major
 
       S_ID S_NAME                                                S_GRADE S_MAJOR                                                                                 
 ---------- -------------------------------------------------- ---------- --------------------------------------------------                                                
-    200101 ±è°¡³ª                                                      1 ÄÄ°ú                                                                                                  
-    200103 ¹Ú¸¶¹Ù                                                      2 ÄÄ°ú      
+    200101 ê¹€ê°€ë‚˜                                                      1 ì»´ê³¼                                                                                                  
+    200103 ë°•ë§ˆë°”                                                      2 ì»´ê³¼      
                                                                                                                                            
 SQL> SELECT P.p_id, P.p_name, P.p_uni, P.p_major
   2  FROM PROFESSOR P
@@ -21,7 +21,7 @@ SQL> SELECT P.p_id, P.p_name, P.p_uni, P.p_major
 
       P_ID P_NAME                                             P_UNI                                              P_MAJOR                                                
 ---------- -------------------------------------------------- -------------------------------------------------- -----------    
-       203 ÃÖÁ¾¿ø                                             ¼÷¸í                                               ÄÄ°ú                                                                                                                                                                                                                                                                                                                                               
+       203 ìµœì¢…ì›                                             ìˆ™ëª…                                               ì»´ê³¼                                                                                                                                                                                                                                                                                                                                               
 SQL> conn scott/ora;
 Connected.
 SQL> show user;
@@ -46,7 +46,8 @@ SQL> SELECT * FROM EMP E
 ---------- ---------- --------- ---------- -------- ---------- ---------- -----------                                                                           
       7369 SMITH      CLERK           7902 80/12/17        800                    20                                                                                
       7566 JONES      MANAGER         7839 81/04/02       2975                    20                                                                                   
-      7902 FORD       ANALYST         7566 81/12/03       3000                    20                                                                                                                                                                                                                                                                                                                                                                     
+      7902 FORD       ANALYST         7566 81/12/03       3000                    20         
+      
 SQL> SELECT * FROM EMP E
   2  WHERE E.job = 'CLERK' AND E.sal > (
   3  SELECT Min(E.sal)

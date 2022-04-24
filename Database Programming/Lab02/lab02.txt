@@ -8,8 +8,8 @@ SQL> SELECT S.s_id, S.s_name, S.s_grade, S.s_major
   6  WHERE E.c_id = 200011);
 
       S_ID S_NAME                                                S_GRADE S_MAJOR                                                                                 
----------- -------------------------------------------------- ---------- --------------------------------------------------                                                
-    200101 김가나                                                      1 컴과                                                                                                  
+---------- -------------------------------------------------- ---------- --------------------------------------------------
+    200101 김가나                                                      1 컴과                             
     200103 박마바                                                      2 컴과      
                                                                                                                                            
 SQL> SELECT P.p_id, P.p_name, P.p_uni, P.p_major
@@ -19,9 +19,10 @@ SQL> SELECT P.p_id, P.p_name, P.p_uni, P.p_major
   5  FROM Teach T
   6  WHERE T.c_id = 200013);
 
-      P_ID P_NAME                                             P_UNI                                              P_MAJOR                                                
+      P_ID P_NAME                                              P_UNI                                              P_MAJOR                                                
 ---------- -------------------------------------------------- -------------------------------------------------- -----------    
-       203 최종원                                             숙명                                               컴과                                                                                                                                                                                                                                                                                                                                               
+       203 최종원                                              숙명                                                컴과    
+       
 SQL> conn scott/ora;
 Connected.
 SQL> show user;
@@ -54,7 +55,7 @@ SQL> SELECT * FROM EMP E
   4  FROM Emp E
   5  WHERE Job = 'SALESMAN');
 
-      EMPNO ENAME      JOB              MGR HIREDATE        SAL       COMM     DEPTNO
+      EMPNO ENAME      JOB              MGR HIREDATE       SAL       COMM     DEPTNO
 ---------- ---------- --------- ---------- -------- ---------- ---------- ----------   
       7934 MILLER     CLERK           7782 82/01/23       1300                    10                                                                               
 
@@ -97,9 +98,10 @@ SQL> select * from emp where sal>ANY(SELECT SAL FROM EMP WHERE JOB='SALESMAN');
       7566 JONES      MANAGER         7839 81/04/02       2975                    20                                                                                  
       7698 BLAKE      MANAGER         7839 81/05/01       2850                    30                                                                                    
       7782 CLARK      MANAGER         7839 81/06/09       2450                    10                                                                                     
-      7499 ALLEN      SALESMAN        7698 81/02/20       1600        300         30                                                                                       
+      7499 ALLEN      SALESMAN        7698 81/02/20       1600        300         30    
       7844 TURNER     SALESMAN        7698 81/09/08       1500          0         30
-      7934 MILLER     CLERK           7782 82/01/23       1300                    10                                                                                                                                                                                                                                                                                                                                                                       
+      7934 MILLER     CLERK           7782 82/01/23       1300                    10     
+      
 8 rows selected.
 
 SQL> conn db1814798/ss2
@@ -164,7 +166,8 @@ SQL> SELECT bookid, NVL(price, 0)
 ---------- ------------                                                                                                                                                  
          1        10000                                                                                                                                                
          2        20000                                                                                                                                               
-         3            0                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+         3            0  
+         
 SQL> SELECT *
   2  FROM Mybook
   3  WHERE price IS NULL;
@@ -172,7 +175,7 @@ SQL> SELECT *
     BOOKID      PRICE                                                                                                                                               
 ---------- ----------                                                                                                                                    
          3         
-                                                                                                                                                                                                                  
+                                        
 SQL> SELECT *
   2  FROM Mybook
   3  WHERE price = '';
@@ -186,25 +189,28 @@ SQL> SELECT bookid, price+100
 ---------- ----------                                                                                                                                                  
          1      10100                                                                                                                                               
          2      20100                                                                                                                                                    
-         3                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+         3     
+         
 SQL> SELECT SUM(price), AVG(price), COUNT(*)
   2  FROM Mybook
   3  WHERE bookid >= 4;
 
-SUM(PRICE) AVG(PRICE)   COUNT(*)                                                                                                                                           
+SUM(PRICE) AVG(PRICE)   COUNT(*)  
 ---------- ---------- ----------                                                                                                                                        
-                               0                    
-                                                                                                                                                                                 
+                               0  
+                               
 SQL>  SELECT COUNT(*), COUNT(price)
   2  FROM Mybook;
 
   COUNT(*) COUNT(PRICE)                                                                                                                                                  
 ---------- ------------                                                                                                                                              
-         3            2                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+         3            2   
+         
 SQL> SELECT SUM(price), AVG(price)
   2  FROM Mybook;
 
-SUM(PRICE) AVG(PRICE)                                                                                                                                                      
+SUM(PRICE) AVG(PRICE)
 ---------- ----------                                                                                                                                                
-     30000      15000                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+     30000      15000  
+     
 SQL> spool off;

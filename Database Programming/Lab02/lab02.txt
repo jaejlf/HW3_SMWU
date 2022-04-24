@@ -111,7 +111,7 @@ USER is "DB1814798"
 SQL> CREATE TABLE BOOK1(
   2  title varchar2(20) NOT NULL,
   3  author varchar2(20),
-  4  pub_year varchar2(10)
+  4  pub_year varchar2(10),
   5  publisher varchar2(20));	
 
 Table created.
@@ -135,15 +135,13 @@ SQL> CREATE TABLE review(
   2  rev_id number NOT NULL,
   3  rev_title varchar(20) REFERENCES BOOK2 (TITLE),
   4  rev_con varchar2(20),
-  5  rev_date varchar2(20)
-  6  );
+  5  rev_date varchar2(20));
 
 Table created.
 
 SQL> create table Mybook(
   2  bookid number,
-  3  price number
-  4  );
+  3  price number);
 
 Table created.
 

@@ -1,0 +1,71 @@
+SQL> CREATE VIEW book_view(bookid, bookname, price)
+  2  AS
+  3  SELECT bookid, bookname, price
+  4  FROM BookList
+  5  WHERE SUBSTR(bookname, 1, 1) = '축';
+
+View created.
+
+SQL> SELECT * FROM book_view;
+
+    BOOKID BOOKNAME                            PRICE                            
+---------- ------------------------------ ----------                            
+         1 축구의 역사                          7000                            
+         2 축구 아는 여자                      13000                            
+         3 축구의 이해                          2200                            
+
+SQL> INSERT INTO book_view(bookid, bookname, price) VALUES(9, '체조 교본', 5000);
+
+1 row created.
+
+SQL> CREATE VIEW book_view1(bookid, bookname, price)
+  2  AS
+  3  SELECT bookid, bookname, price
+  4  FROM BookList
+  5  WHERE SUBSTR(bookname, 1, 1) = '축'
+  6  WITH CHECK OPTION;
+
+View created.
+
+SQL> INSERT INTO book_view1(bookid, bookname, price) VALUES(9, '체조 교본', 5000);
+INSERT INTO book_view1(bookid, bookname, price) VALUES(9, '체조 교본', 5000)
+            *
+ERROR at line 1:
+ORA-01402: view WITH CHECK OPTION where-clause violation 
+
+SQL> CREATE VIEW book_view2(bookid, bookname, price)
+  2  AS
+  3  SELECT bookid, bookname, price
+  4  FROM BookList
+  5  WHERE SUBSTR(bookname, 1, 1) = '축'
+  6  WITH READ ONLY;
+
+View created.
+
+SQL> INSERT INTO book_view2(bookid, bookname, price) VALUES(9, '체조 교본', 5000);
+INSERT INTO book_view2(bookid, bookname, price) VALUES(9, '체조 교본', 5000)
+                       *
+ERROR at line 1:
+ORA-42399: cannot perform a DML operation on a read-only view 
+
+SQL> col view_name format a20;
+SQL> col text format a40;
+SQL> SELECT view_name, text
+  2  FROM user_views;
+
+VIEW_NAME            TEXT                                                       
+-------------------- ----------------------------------------                   
+BOOK_VIEW1           SELECT bookid, bookname, price                             
+                     FROM BookList                                              
+                     WHERE SUBSTR(bookname, 1, 1) = '축'                        
+                                                                                
+BOOK_VIEW2           SELECT bookid, bookname, price                             
+                     FROM BookList                                              
+                     WHERE SUBSTR(bookname, 1, 1) = '축'                        
+                                                                                
+BOOK_VIEW            SELECT bookid, bookname, price                             
+                     FROM BookList                                              
+                     WHERE SUBSTR(bookname, 1, 1) = '축'                                
+                                                                                
+
+SQL> spool off;

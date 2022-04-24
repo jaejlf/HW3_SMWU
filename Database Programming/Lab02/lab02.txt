@@ -1,21 +1,23 @@
 SQL> show user;
 USER is "DB1814798"
-SQL> SELECT s.S_ID,s.S_NAME,s.S_GRADE,s.S_MAJOR FROM STUDENT s
-  2  WHERE s.S_ID IN (
-  3  SELECT e.S_ID FROM ENROLL e
-  4  WHERE e.C_ID = 200011
-  5  );
+SQL> SELECT S.s_id, S.s_name, S.s_grade, S.s_major
+  2  FROM Student S
+  3  WHERE S.s_id IN (
+  4  SELECT E.s_id
+  5  FROM Enroll E
+  6  WHERE E.c_id = 200011);
 
       S_ID S_NAME                                                S_GRADE S_MAJOR                                                                                 
 ---------- -------------------------------------------------- ---------- --------------------------------------------------                                                
     200101 김가나                                                      1 컴과                                                                                                  
     200103 박마바                                                      2 컴과      
                                                                                                                                            
-SQL> SELECT p.P_ID,p.P_NAME,p.P_UNI,p.P_MAJOR FROM PROFESSOR p
-  2  WHERE p.P_ID = (
-  3  SELECT t.P_ID FROM TEACH t
-  4  WHERE t.C_ID = 200013
-  5  );
+SQL> SELECT P.p_id, P.p_name, P.p_uni, P.p_major
+  2  FROM PROFESSOR P
+  3  WHERE P.p_id IN (
+  4  SELECT T.p_id
+  5  FROM Teach T
+  6  WHERE T.c_id = 200013);
 
       P_ID P_NAME                                             P_UNI                                              P_MAJOR                                                
 ---------- -------------------------------------------------- -------------------------------------------------- -----------    
@@ -34,19 +36,22 @@ DEPT                                                         TABLE
 EMP                                                          TABLE                                                                                                     
 SALGRADE                                                  TABLE  
                                                                                                                                                           
-SQL> SELECT * FROM EMP e
-  2  WHERE e.DEPTNO = (
-  3  SELECT MIN(e.DEPTNO) FROM EMP e
-  4  WHERE e.SAL < 1000
-  5  );
+SQL> SELECT * FROM EMP E
+  2  WHERE E.deptno IN (
+  3  SELECT MIN(E.deptno)
+  4  FROM Emp E
+  5  WHERE E.sal < 1000);
 
      EMPNO ENAME      JOB              MGR HIREDATE        SAL       COMM     DEPTNO 
 ---------- ---------- --------- ---------- -------- ---------- ---------- -----------                                                                           
       7369 SMITH      CLERK           7902 80/12/17        800                    20                                                                                
       7566 JONES      MANAGER         7839 81/04/02       2975                    20                                                                                   
       7902 FORD       ANALYST         7566 81/12/03       3000                    20                                                                                                                                                                                                                                                                                                                                                                     
-SQL> SELECT * FROM EMP e
-  2  WHERE e.JOB = 'CLERK' AND e.SAL > ANY(SELECT e.SAL FROM EMP e WHERE JOB = 'SALESMAN');
+SQL> SELECT * FROM EMP E
+  2  WHERE E.job = 'CLERK' AND E.sal > (
+  3  SELECT Min(E.sal)
+  4  FROM Emp E
+  5  WHERE Job = 'SALESMAN');
 
       EMPNO ENAME      JOB              MGR HIREDATE        SAL       COMM     DEPTNO
 ---------- ---------- --------- ---------- -------- ---------- ---------- ----------                                                                                           
@@ -103,7 +108,8 @@ USER is "DB1814798"
 SQL> CREATE TABLE BOOK1(
   2  title varchar2(20) NOT NULL,
   3  author varchar2(20),
-  4  pub_year varchar2(10));
+  4  pub_year varchar2(10)
+  5  publisher varchar2(20));	
 
 Table created.
 

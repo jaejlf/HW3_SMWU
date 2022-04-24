@@ -29,12 +29,12 @@ USER is "SCOTT"
 SQL> 
 SQL> select * from tab;
 
-TNAME                                                     TABTYPE  CLUSTERID                                                                                   
------------------------------------------------------------- ------- ----------                                                                                                   
-BONUS                                                      TABLE                                                                                                   
+TNAME                                                        TABTYPE CLUSTERID                                                                                   
+------------------------------------------------------------ ------- ----------                                                                                          
+BONUS                                                        TABLE                                                                                                   
 DEPT                                                         TABLE                                                                                                
 EMP                                                          TABLE                                                                                                     
-SALGRADE                                                  TABLE  
+SALGRADE                                                     TABLE  
                                                                                                                                                           
 SQL> SELECT * FROM EMP E
   2  WHERE E.deptno IN (
@@ -55,7 +55,7 @@ SQL> SELECT * FROM EMP E
   5  WHERE Job = 'SALESMAN');
 
       EMPNO ENAME      JOB              MGR HIREDATE        SAL       COMM     DEPTNO
----------- ---------- --------- ---------- -------- ---------- ---------- ----------                                                                                           
+---------- ---------- --------- ---------- -------- ---------- ---------- ----------   
       7934 MILLER     CLERK           7782 82/01/23       1300                    10                                                                               
 
 SQL> select * from emp where sal<ALL(SELECT SAL FROM EMP WHERE JOB='SALESMAN');

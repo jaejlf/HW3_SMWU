@@ -4,92 +4,85 @@ SQL> SELECT A.CONSTRAINT_NAME, B.CONSTRAINT_TYPE, A.TABLE_NAME, A.COLUMN_NAME
   2  FROM user_cons_columns A, user_constraints B
   3  WHERE A.TABLE_NAME = B.TABLE_NAME AND A.TABLE_NAME = 'BOOK1';
 
-CONSTRAINT_NAME                                              C                  
------------------------------------------------------------- -                  
-TABLE_NAME                                                                      
-------------------------------------------------------------                    
-COLUMN_NAME                                                                     
---------------------------------------------------------------------------------
-SYS_C007027                                                  C                  
-BOOK1                                                                           
-TITLE            
+CONSTRAINT_NAME      C TABLE_NAME           COLUMN_NAME
+-------------------- - -------------------- --------------------
+SYS_C007077          C BOOK1                TITLE    
 
 SQL> CREATE TABLE BOOKLIST (
   2  bookid number,
   3  bookname varchar(30),
   4  publisher varchar(20),
-  5  price number
-  6  );
+  5  price number);
 
 Table created.
 
-SQL> INSERT INTO BOOKLIST VALUES (1, 'Ãà±¸ÀÇ ¿ª»ç', '±Â½ºÆ÷Ã÷', 7000);
+SQL> INSERT INTO BOOKLIST VALUES (1, 'ì¶•êµ¬ì˜ ì—­ì‚¬', 'êµ¿ìŠ¤í¬ì¸ ', 7000);
 
 1 row created.
 
-SQL> INSERT INTO BOOKLIST VALUES (2, 'Ãà±¸ ¾Æ´Â ¿©ÀÚ', '³ª¹«¼ö', 13000);
+SQL> INSERT INTO BOOKLIST VALUES (2, 'ì¶•êµ¬ ì•„ëŠ” ì—¬ìž', 'ë‚˜ë¬´ìˆ˜', 13000);
 
 1 row created.
 
-SQL> INSERT INTO BOOKLIST VALUES (3, 'Ãà±¸ÀÇ ÀÌÇØ', '´ëÇÑ¹Ìµð¾î', 2200);
+SQL> INSERT INTO BOOKLIST VALUES (3, 'ì¶•êµ¬ì˜ ì´í•´', 'ëŒ€í•œë¯¸ë””ì–´', 2200);
 
 1 row created.
 
-SQL> INSERT INTO BOOKLIST VALUES (4, '°ñÇÁ ¹ÙÀÌºí', '´ëÇÑ¹Ìµð¾î', 35000);
+SQL> INSERT INTO BOOKLIST VALUES (4, 'ê³¨í”„ ë°”ì´ë¸”', 'ëŒ€í•œë¯¸ë””ì–´', 35000);
 
 1 row created.
 
-SQL> INSERT INTO BOOKLIST VALUES (5, 'ÇÇ°Ü ±³º»', '±Â½ºÆ÷Ã÷', 8000);
+SQL> INSERT INTO BOOKLIST VALUES (5, 'í”¼ê²¨ êµë³¸', 'êµ¿ìŠ¤í¬ì¸ ', 8000);
 
 1 row created.
 
-SQL> INSERT INTO BOOKLIST VALUES (6, '¿ªµµ ´Ü°èº° ±â¼ú', '±Â½ºÆ÷Ã÷', 6000);
+SQL> INSERT INTO BOOKLIST VALUES (6, 'ì—­ë„ ë‹¨ê³„ë³„ ê¸°ìˆ ', 'êµ¿ìŠ¤í¬ì¸ ', 6000);
 
 1 row created.
 
-SQL> INSERT INTO BOOKLIST VALUES (7, '¾ß±¸ÀÇ Ãß¾ï', 'ÀÌ»ó¹Ìµð¾î', 20000);
+SQL> INSERT INTO BOOKLIST VALUES (7, 'ì•¼êµ¬ì˜ ì¶”ì–µ', 'ì´ìƒë¯¸ë””ì–´', 20000);
 
 1 row created.
 
-SQL> INSERT INTO BOOKLIST VALUES (8, '¾ß±¸¸¦ ºÎÅ¹ÇØ', 'ÀÌ»ó¹Ìµð¾î', 13000);
+SQL> INSERT INTO BOOKLIST VALUES (8, 'ì•¼êµ¬ë¥¼ ë¶€íƒí•´', 'ì´ìƒë¯¸ë””ì–´', 13000);
 
 1 row created.
 
 SQL> show user;
 USER is "DB1814798"
-SQL> SELECT replace(BOOKNAME, '¾ß±¸', 'ÇÇ±¸') title
-  2  FROM BOOKLIST
-  3  WHERE substr(BOOKNAME, 0, 2) = '¾ß±¸';
+SQL> SELECT REPLACE(bookname, 'ì•¼êµ¬', 'í”¼êµ¬') AS TITLE
+  2  FROM Booklist
+  3  WHERE SUBSTR(bookname, 0, 2) = 'ì•¼êµ¬';
 
 TITLE                                                                                               
 ----------------------------------------------------------------------------------------------------
-ÇÇ±¸ÀÇ Ãß¾ï                                                                                         
-ÇÇ±¸¸¦ ºÎÅ¹ÇØ                                                                                       
+í”¼êµ¬ì˜ ì¶”ì–µ                                                                                         
+í”¼êµ¬ë¥¼ ë¶€íƒí•´                                                                                       
 
 SQL> show user;
 USER is "DB1814798"
-SQL> SELECT BOOKNAME Á¦¸ñ, length(BOOKNAME) ±ÛÀÚ¼ö
-  2  FROM BOOKLIST
-  3  WHERE PUBLISHER = '±Â½ºÆ÷Ã÷';
+SQL> SELECT bookname AS ì œëª©, LENGTH(bookname) ê¸€ìžìˆ˜
+  2  FROM Booklist
+  3  WHERE publisher = 'êµ¿ìŠ¤í¬ì¸ ';
 
-Á¦¸ñ                               ±ÛÀÚ¼ö                                                           
+ì œëª©                               ê¸€ìžìˆ˜                                                           
 ------------------------------ ----------                                                           
-Ãà±¸ÀÇ ¿ª»ç                             6                                                           
-ÇÇ°Ü ±³º»                               5                                                           
-¿ªµµ ´Ü°èº° ±â¼ú                        9                                                           
+ì¶•êµ¬ì˜ ì—­ì‚¬                             6                                                           
+í”¼ê²¨ êµë³¸                               5                                                          
+ì—­ë„ ë‹¨ê³„ë³„ ê¸°ìˆ                         9                                                           
 
 SQL> show user;
 USER is "DB1814798"
-SQL> SELECT Á¾¸ñ, count(Á¾¸ñ) °³¼ö
-  2  FROM (SELECT substr(BOOKNAME, 0, 2) Á¾¸ñ FROM BOOKLIST)
-  3  GROUP BY Á¾¸ñ;
+SQL> SELECT ì¢…ëª©, COUNT(ì¢…ëª©) ê°œìˆ˜
+  2  FROM (SELECT SUBSTR(bookname, 0, 2) AS ì¢…ëª© FROM Booklist)
+  3  GROUP BY ì¢…ëª©;
 
-Á¾¸ñ       °³¼ö                                                                                     
+ì¢…ëª©       ê°œìˆ˜                                                                                     
 ---- ----------                                                                                     
-¿ªµµ          1                                                                                     
-°ñÇÁ          1                                                                                     
-¾ß±¸          2                                                                                     
-ÇÇ°Ü          1                                                                                     
-Ãà±¸          3                                                                                     
+ì—­ë„          1                                                                                     
+ê³¨í”„          1                                                                                     
+ì•¼êµ¬          2                                                                                     
+í”¼ê²¨          1                                                                                     
+ì¶•êµ¬          3                                                                                     
 
 SQL> spool off;

@@ -1,0 +1,263 @@
+SQL> DECLARE
+  2  name Emp.ename%TYPE;
+  3  num Emp.empno%TYPE;
+  4  salary Emp.sal%TYPE;
+  5  
+  6  BEGIN
+  7  SELECT ename, empno, sal
+  8  INTO name, num, salary
+  9  FROM EMP
+ 10  WHERE empno = 7844;
+ 11  
+ 12  DBMS_OUTPUT.PUT_LINE('학번 : 1814798');
+ 13  DBMS_OUTPUT.PUT_LINE('사원번호: ' || num);
+ 14  DBMS_OUTPUT.PUT_LINE('사원이름: ' || name);
+ 15  DBMS_OUTPUT.PUT_LINE('사원급여: ' || salary);
+ 16  
+ 17  END;
+ 18  /
+학번 : 1814798                                                                  
+사원번호: 7844                                                                  
+사원이름: TURNER                                                                
+사원급여: 1500                                                                  
+
+PL/SQL procedure successfully completed.
+
+SQL> DECLARE
+  2  emp1 Emp%ROWTYPE;
+  3  
+  4  BEGIN
+  5  SELECT ename, empno, sal
+  6  INTO emp1.ename, emp1.empno, emp1.sal
+  7  FROM emp
+  8  WHERE empno = 7844;
+  9  
+ 10  DBMS_OUTPUT.PUT_LINE('학번 : 1814798');
+ 11  DBMS_OUTPUT.PUT_LINE('사원번호: ' || emp1.empno);
+ 12  DBMS_OUTPUT.PUT_LINE('사원이름: ' || emp1.ename);
+ 13  DBMS_OUTPUT.PUT_LINE('사원급여: ' || emp1.sal);
+ 14  
+ 15  END;
+ 16  /
+학번 : 1814798                                                                  
+사원번호: 7844                                                                  
+사원이름: TURNER                                                                
+사원급여: 1500                                                                  
+
+PL/SQL procedure successfully completed.
+
+SQL> DECLARE
+  2  lec Lecture%ROWTYPE;
+  3  
+  4  BEGIN
+  5  SELECT id, no, prof
+  6  INTO lec.id, lec.no, lec.prof
+  7  FROM Lecture
+  8  WHERE subject = 'Os';
+  9  
+ 10  lec.subject := 'Os_02';
+ 11  lec.id := lec.id + 1;
+ 12  lec.no := lec.no + 5;
+ 13  INSERT INTO Lecture VALUES(lec.id, lec.no, lec.subject, lec.prof);
+ 14  END;
+ 15  /
+
+PL/SQL procedure successfully completed.
+
+SQL> SELECT * FROM Lecture;
+
+        ID         NO SUBJECT              PROF                                 
+---------- ---------- -------------------- ----------                           
+         1       2001 Database             Shim                                 
+         2       2002 Programming          Chang                                
+         3       2003 Graphics             You                                  
+         4       2004 Compiler             Park                                 
+         5       2005 Os                   Kim                                  
+         6       2010 Os_02                Kim                                  
+
+6 rows selected.
+
+SQL> DECLARE
+  2  lec Lecture%ROWTYPE;
+  3  
+  4  BEGIN
+  5  SELECT subject
+  6  INTO lec.subject
+  7  FROM Lecture
+  8  WHERE subject = 'Os_02';
+  9  
+ 10  UPDATE Lecture SET subject = '1814798'
+ 11  WHERE subject = lec.subject;
+ 12  
+ 13  END;
+ 14  /
+
+PL/SQL procedure successfully completed.
+
+SQL> SELECT * FROM Lecture;
+
+        ID         NO SUBJECT              PROF                                 
+---------- ---------- -------------------- ----------                           
+         1       2001 Database             Shim                                 
+         2       2002 Programming          Chang                                
+         3       2003 Graphics             You                                  
+         4       2004 Compiler             Park                                 
+         5       2005 Os                   Kim                                  
+         6       2010 1814798              Kim                                  
+
+6 rows selected.
+
+SQL> DECLARE
+  2  TYPE ename_table IS TABLE OF Emp.ename%TYPE
+  3  INDEX BY BINARY_INTEGER;
+  4  TYPE empno_table IS TABLE OF Emp.empno%TYPE
+  5  INDEX BY BINARY_INTEGER;
+  6  name_tab ename_table;
+  7  num_tab empno_table;
+  8  
+  9  i BINARY_INTEGER := 0;
+ 10  
+ 11  BEGIN
+ 12  FOR emp_list IN(SELECT empno, ename FROM Emp) LOOP
+ 13  i := i + 1;
+ 14  num_tab(i) := emp_list.empno;
+ 15  name_tab(i) := emp_list.ename;
+ 16  DBMS_OUTPUT.PUT_LINE('사원번호 : ' || num_tab(i) || ' 이름 : ' || name_tab(i));
+ 17  END LOOP;
+ 18  
+ 19  DBMS_OUTPUT.PUT_LINE('1814798');
+ 20  END;
+ 21  /
+사원번호 : 7369 이름 : SMITH                                                    
+사원번호 : 7499 이름 : ALLEN                                                    
+사원번호 : 7521 이름 : WARD                                                     
+사원번호 : 7566 이름 : JONES                                                    
+사원번호 : 7654 이름 : MARTIN                                                   
+사원번호 : 7698 이름 : BLAKE                                                    
+사원번호 : 7782 이름 : CLARK                                                    
+사원번호 : 7839 이름 : KING                                                     
+사원번호 : 7844 이름 : TURNER                                                   
+사원번호 : 7900 이름 : JAMES                                                    
+사원번호 : 7902 이름 : FORD                                                     
+사원번호 : 7934 이름 : MILLER                                                   
+1814798                                                                         
+
+PL/SQL procedure successfully completed.
+
+SQL> DECLARE
+  2  TYPE empno_table IS TABLE OF Emp.empno%TYPE
+  3  INDEX BY BINARY_INTEGER;
+  4  num_tab empno_table;
+  5  
+  6  i BINARY_INTEGER := 0;
+  7  
+  8  BEGIN
+  9  FOR emp_list IN(SELECT empno FROM Emp) LOOP
+ 10  i := i + 1;
+ 11  num_tab(i) := emp_list.empno;
+ 12  END LOOP;
+ 13  
+ 14  DBMS_OUTPUT.PUT_LINE('1814798 총 사원 수 : ' || num_tab.COUNT);
+ 15  
+ 16  END;
+ 17  /
+1814798 총 사원 수 : 12                                                         
+
+PL/SQL procedure successfully completed.
+
+SQL> DECLARE
+  2  TYPE emp_record IS RECORD(
+  3  name Emp.ename%TYPE,
+  4  salary Emp.sal%TYPE);
+  5  emp_rec emp_record;
+  6  
+  7  BEGIN
+  8  SELECT ename, sal
+  9  INTO emp_rec.name, emp_rec.salary
+ 10  FROM Emp
+ 11  WHERE empno = 7369;
+ 12  DBMS_OUTPUT.PUT_LINE('1814798 사원 이름 : ' || emp_rec.name || ' 급여 : ' || emp_rec.salary);
+ 13  
+ 14  END;
+ 15  /
+1814798 사원 이름 : SMITH 급여 : 800                                            
+
+PL/SQL procedure successfully completed.
+
+SQL> DECLARE
+  2  cur_month CHAR(2);
+  3  
+  4  BEGIN
+  5  SELECT TO_CHAR(SYSDATE, 'MM')
+  6  INTO cur_month
+  7  FROM Dual;
+  8  
+  9  IF(cur_month >= '03' and cur_month <= '05')
+ 10  THEN DBMS_OUTPUT.PUT_LINE('봄');
+ 11  ELSIF(cur_month >= '06' and cur_month <= '08')
+ 12  THEN DBMS_OUTPUT.PUT_LINE('여름');
+ 13  ELSIF(cur_month >= '09' and cur_month <= '11')
+ 14  THEN DBMS_OUTPUT.PUT_LINE('가을');
+ 15  ELSE DBMS_OUTPUT.PUT_LINE('겨울');
+ 16  END IF;
+ 17  
+ 18  END;
+ 19  /
+봄                                                                              
+
+PL/SQL procedure successfully completed.
+
+SQL> DECLARE
+  2  ans NUMBER := 1;
+  3  
+  4  BEGIN
+  5  FOR i IN 1..5 LOOP
+  6  ans := ans * i;
+  7  END LOOP;
+  8  
+  9  DBMS_OUTPUT.PUT_LINE('5 factorial: ' || TO_CHAR(ans));
+ 10  
+ 11  END;
+ 12  /
+5 factorial: 120                                                                
+
+PL/SQL procedure successfully completed.
+
+SQL> DECLARE
+  2  i NUMBER := 0;
+  3  ans NUMBER := 1;
+  4  
+  5  BEGIN
+  6  WHILE i < 5 LOOP
+  7  i := i + 1;
+  8  ans := ans * i;
+  9  END LOOP;
+ 10  
+ 11  DBMS_OUTPUT.PUT_LINE('5 factorial: ' || TO_CHAR(ans));
+ 12  
+ 13  END;
+ 14  /
+5 factorial: 120                                                                
+
+PL/SQL procedure successfully completed.
+
+SQL> DECLARE
+  2  i NUMBER := 0;
+  3  ans NUMBER := 1;
+  4  
+  5  BEGIN
+  6  LOOP
+  7  i := i + 1;
+  8  ans := ans * i;
+  9  EXIT WHEN i >= 5;
+ 10  END LOOP;
+ 11  
+ 12  DBMS_OUTPUT.PUT_LINE('5 factorial: ' || TO_CHAR(ans));
+ 13  
+ 14  END;
+ 15  /
+5 factorial: 120                                                                
+
+PL/SQL procedure successfully completed.
+
+SQL> spool off;

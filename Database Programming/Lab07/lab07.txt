@@ -10,7 +10,7 @@ SQL> DECLARE
  10  
  11  BEGIN
  12  FOR major IN major_list LOOP
- 13  DBMS_OUTPUT.PUT_LINE('Àü°ø : ' || major.s_major || ' ÇÐ»ý ¼ö : ' || major.count);
+ 13  DBMS_OUTPUT.PUT_LINE('ì „ê³µ : ' || major.s_major || ' í•™ìƒ ìˆ˜ : ' || major.count);
  14  END LOOP;
  15  
  16  OPEN student_list;
@@ -18,23 +18,23 @@ SQL> DECLARE
  18  FETCH student_list INTO num;
  19  EXIT WHEN student_list%NOTFOUND;
  20  END LOOP;
- 21  DBMS_OUTPUT.PUT_LINE('ÃÑ ÇÐ»ý ¼ö : ' || student_list%ROWCOUNT);
+ 21  DBMS_OUTPUT.PUT_LINE('ì´ í•™ìƒ ìˆ˜ : ' || student_list%ROWCOUNT);
  22  CLOSE student_list;
  23  EXCEPTION
  24  WHEN OTHERS THEN
- 25  DBMS_OUTPUT.PUT_LINE('¿¡·¯¹ß»ý');
+ 25  DBMS_OUTPUT.PUT_LINE('ì—ëŸ¬ë°œìƒ');
  26  END;
  27  /
-Àü°ø : ¹ýÇÐ°ú ÇÐ»ý ¼ö : 1                                                       
-Àü°ø : ½ÄÇ°¿µ¾çÇÐ°ú ÇÐ»ý ¼ö : 1                                                 
-Àü°ø : °æÁ¦ÇÐ°ú ÇÐ»ý ¼ö : 3                                                     
-Àü°ø : ¹«¿ë°ú ÇÐ»ý ¼ö : 7                                                       
-Àü°ø : ÇÑ±¹¾î¹®ÇÐºÎ ÇÐ»ý ¼ö : 1                                                 
-Àü°ø : Åë°èÇÐ°ú ÇÐ»ý ¼ö : 2                                                     
-Àü°ø : ÄÄÇ»ÅÍ°úÇÐ°ú ÇÐ»ý ¼ö : 12                                                
-Àü°ø : °ÇÃàÇÐ°ú ÇÐ»ý ¼ö : 3                                                     
-Àü°ø : ÀÛ°î°ú ÇÐ»ý ¼ö : 4                                                       
-ÃÑ ÇÐ»ý ¼ö : 34                                                                 
+ì „ê³µ : ë²•í•™ê³¼ í•™ìƒ ìˆ˜ : 1                                                       
+ì „ê³µ : ì‹í’ˆì˜ì–‘í•™ê³¼ í•™ìƒ ìˆ˜ : 1                                                 
+ì „ê³µ : ê²½ì œí•™ê³¼ í•™ìƒ ìˆ˜ : 3                                                     
+ì „ê³µ : ë¬´ìš©ê³¼ í•™ìƒ ìˆ˜ : 7                                                       
+ì „ê³µ : í•œêµ­ì–´ë¬¸í•™ë¶€ í•™ìƒ ìˆ˜ : 1                                                 
+ì „ê³µ : í†µê³„í•™ê³¼ í•™ìƒ ìˆ˜ : 2                                                     
+ì „ê³µ : ì»´í“¨í„°ê³¼í•™ê³¼ í•™ìƒ ìˆ˜ : 12                                                
+ì „ê³µ : ê±´ì¶•í•™ê³¼ í•™ìƒ ìˆ˜ : 3                                                     
+ì „ê³µ : ìž‘ê³¡ê³¼ í•™ìƒ ìˆ˜ : 4                                                       
+ì´ í•™ìƒ ìˆ˜ : 34                                                                 
 
 PL/SQL procedure successfully completed.
 
@@ -46,20 +46,20 @@ SQL> DECLARE
   6  BEGIN
   7  FOR i IN pwds LOOP
   8  IF i.count < 5 THEN
-  9  DBMS_OUTPUT.PUT_LINE(i.s_id || 'ÀÇ ºñ¹Ð¹øÈ£ ±æÀÌ°¡ ' || i.count || 'ÀÔ´Ï´Ù.');
+  9  DBMS_OUTPUT.PUT_LINE(i.s_id || 'ì˜ ë¹„ë°€ë²ˆí˜¸ ê¸¸ì´ê°€ ' || i.count || 'ìž…ë‹ˆë‹¤.');
  10  RAISE length_less;
  11  END IF;
  12  END LOOP;
  13  EXCEPTION
  14  WHEN length_less THEN
- 15  RAISE_APPLICATION_ERROR(-20020, '5ÀÚ¸® ÀÌ»ó ÇÊ¿ä');
+ 15  RAISE_APPLICATION_ERROR(-20020, '5ìžë¦¬ ì´ìƒ í•„ìš”');
  16  END;
  17  /
-1400015ÀÇ ºñ¹Ð¹øÈ£ ±æÀÌ°¡ 4ÀÔ´Ï´Ù.                                              
+1400015ì˜ ë¹„ë°€ë²ˆí˜¸ ê¸¸ì´ê°€ 4ìž…ë‹ˆë‹¤.                                              
 DECLARE
 *
 ERROR at line 1:
-ORA-20020: 5ÀÚ¸® ÀÌ»ó ÇÊ¿ä
+ORA-20020: 5ìžë¦¬ ì´ìƒ í•„ìš”
 ORA-06512: at line 15 
 
 
@@ -76,7 +76,6 @@ SQL> CREATE OR REPLACE PROCEDURE add_days_proc
 
 Procedure created.
 
-SQL> 
 SQL> DECLARE
   2  result VARCHAR2(10);
   3  BEGIN
@@ -104,7 +103,6 @@ SQL> CREATE OR REPLACE FUNCTION add_days_func
 
 Function created.
 
-SQL> 
 SQL> VAR result VARCHAR2(10);
 SQL> EXECUTE :result := add_days_func(20220509, 7);
 

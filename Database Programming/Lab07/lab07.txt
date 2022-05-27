@@ -1,0 +1,113 @@
+SQL> DECLARE
+  2  CURSOR major_list IS
+  3  SELECT s_major, COUNT(s_id) count
+  4  FROM Students GROUP BY s_major;
+  5  CURSOR student_list IS
+  6  SELECT s_id
+  7  FROM Students;
+  8  
+  9  num NUMBER;
+ 10  
+ 11  BEGIN
+ 12  FOR major IN major_list LOOP
+ 13  DBMS_OUTPUT.PUT_LINE('전공 : ' || major.s_major || ' 학생 수 : ' || major.count);
+ 14  END LOOP;
+ 15  
+ 16  OPEN student_list;
+ 17  LOOP
+ 18  FETCH student_list INTO num;
+ 19  EXIT WHEN student_list%NOTFOUND;
+ 20  END LOOP;
+ 21  DBMS_OUTPUT.PUT_LINE('총 학생 수 : ' || student_list%ROWCOUNT);
+ 22  CLOSE student_list;
+ 23  EXCEPTION
+ 24  WHEN OTHERS THEN
+ 25  DBMS_OUTPUT.PUT_LINE('에러발생');
+ 26  END;
+ 27  /
+전공 : 법학과 학생 수 : 1                                                       
+전공 : 식품영양학과 학생 수 : 1                                                 
+전공 : 경제학과 학생 수 : 3                                                     
+전공 : 무용과 학생 수 : 7                                                       
+전공 : 한국어문학부 학생 수 : 1                                                 
+전공 : 통계학과 학생 수 : 2                                                     
+전공 : 컴퓨터과학과 학생 수 : 12                                                
+전공 : 건축학과 학생 수 : 3                                                     
+전공 : 작곡과 학생 수 : 4                                                       
+총 학생 수 : 34                                                                 
+
+PL/SQL procedure successfully completed.
+
+SQL> DECLARE
+  2  length_less EXCEPTION;
+  3  CURSOR pwds IS
+  4  SELECT s_id, length(s_pwd) count
+  5  FROM STUDENTS;
+  6  BEGIN
+  7  FOR i IN pwds LOOP
+  8  IF i.count < 5 THEN
+  9  DBMS_OUTPUT.PUT_LINE(i.s_id || '의 비밀번호 길이가 ' || i.count || '입니다.');
+ 10  RAISE length_less;
+ 11  END IF;
+ 12  END LOOP;
+ 13  EXCEPTION
+ 14  WHEN length_less THEN
+ 15  RAISE_APPLICATION_ERROR(-20020, '5자리 이상 필요');
+ 16  END;
+ 17  /
+1400015의 비밀번호 길이가 4입니다.                                              
+DECLARE
+*
+ERROR at line 1:
+ORA-20020: 5자리 이상 필요
+ORA-06512: at line 15 
+
+
+SQL> CREATE OR REPLACE PROCEDURE add_days_proc
+  2  (input_date IN CHAR, add_day IN NUMBER, result OUT VARCHAR2)
+  3  IS
+  4  tmp NUMBER;
+  5  BEGIN
+  6  tmp := TO_NUMBER(input_date);
+  7  tmp := tmp + add_day;
+  8  result := TO_CHAR(TO_DATE(TO_CHAR(tmp)), 'YYYYMMDD');
+  9  END;
+ 10  /
+
+Procedure created.
+
+SQL> 
+SQL> DECLARE
+  2  result VARCHAR2(10);
+  3  BEGIN
+  4  add_days_proc(20220509, 7, result);
+  5  DBMS_OUTPUT.PUT_LINE('RESULT : ' || result);
+  6  END;
+  7  /
+RESULT : 20220516                                                               
+
+PL/SQL procedure successfully completed.
+
+SQL> CREATE OR REPLACE FUNCTION add_days_func
+  2  (input_date IN CHAR, add_day IN NUMBER)
+  3  RETURN VARCHAR2
+  4  IS
+  5  result VARCHAR(10);
+  6  tmp NUMBER;
+  7  BEGIN
+  8  tmp := TO_NUMBER(input_date);
+  9  tmp := tmp + add_day;
+ 10  result := TO_CHAR(TO_DATE(TO_CHAR(tmp)), 'YYYYMMDD');
+ 11  RETURN result;
+ 12  END;
+ 13  /
+
+Function created.
+
+SQL> 
+SQL> VAR result VARCHAR2(10);
+SQL> EXECUTE :result := add_days_func(20220509, 7);
+
+PL/SQL procedure successfully completed.
+
+SQL> spool off;

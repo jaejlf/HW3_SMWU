@@ -42,6 +42,6 @@
 <br>
 
 ## Database Programming
-[Notetaking](https://jaej-sohn.notion.site/d8e9af84dd30441d9b896dc6c92ef06a)
-
-- Lab
+- 데이터베이스 설계와 질의
+- 데이터베이스 프로그래밍
+- [Notetaking](https://jaej-sohn.notion.site/d8e9af84dd30441d9b896dc6c92ef06a)

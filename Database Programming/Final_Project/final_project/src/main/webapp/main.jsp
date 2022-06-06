@@ -1,11 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
 <head>
-<meta charset="EUC-KR">
-<title>데이터베이스를 활용한 수강신청 시스템입니다.</title>
+<meta charset="UTF-8">
+<title>영화 예매 시스템</title>
 </head>
 
 <body>

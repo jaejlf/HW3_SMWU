@@ -32,7 +32,7 @@ try{
 catch(SQLException e){
 	%>
 	<script>
-		alert("아이디(학번)와 패스워드가 올바르지 않습니다.");
+		alert("아이디와 패스워드가 올바르지 않습니다.");
 		location.href="login.jsp";
 	</script>
 	<%

@@ -1,12 +1,10 @@
-<%@ page language="java" contentType="text/html; 
-charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
 <head>
 <meta charset="UTF-8">
-<title>수강신청 시스템 로그인</title>
+<title>영화 예매 시스템 로그인</title>
 </head>
 
 <body>
@@ -16,7 +14,7 @@ charset=UTF-8"
 				<div align="center">아이디와 패스워드를 입력하세요</div>
 			</td>
 	</table>
-	<table width="75%" align="center" border>
+	<table width="75%" height=15px align="center" border>
 		<form method="post" action="login_verify.jsp">
 			<tr>
 				<td>

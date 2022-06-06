@@ -1,0 +1,30 @@
+SQL> CREATE OR REPLACE TRIGGER trigger_class
+  2  BEFORE
+  3  UPDATE ON CLASS
+  4  FOR EACH ROW
+  5  BEGIN
+  6  DBMS_OUTPUT.PUT_LINE('변경 전 : ' || :old.p_id || ' | ' || :old.c_id || ' | ' || :old.c_no || ' | ' || :old.c_where);
+  7  DBMS_OUTPUT.PUT_LINE('변경 후 : ' || :new.p_id || ' | ' || :new.c_id || ' | ' || :new.c_no || ' | ' || :new.c_where);
+  8  END;
+  9  /
+
+Trigger created.
+
+SQL> 
+SQL> UPDATE CLASS
+  2  SET c_where = '1814798'
+  3  WHERE c_id = '20200103' and c_no = '2';
+
+1 row updated.
+
+SQL> SELECT * FROM CLASS;
+
+      P_ID       C_ID       C_NO C_WHERE                                        
+---------- ---------- ---------- ------------------------------                 
+         1   20200101          1 명신관                                         
+         1   20200102          1 명신관                                         
+         2   20200103          1 명신관                                         
+         2   20200103          2 1814798                                        
+         2   20200103          3 명신관                                         
+
+SQL> spool off;

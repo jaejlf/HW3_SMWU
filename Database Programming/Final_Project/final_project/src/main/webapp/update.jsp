@@ -48,7 +48,7 @@
 	}
 	%>
 
-	<table width="75%" align="center" bgcolor="#FFFF99" border>
+	<table width="75%" align="center" bgcolor="#dddcfe">
 		<td><div align="center">사용자 정보를 확인하고 수정할 정보를 입력해주세요.</div></td>
 	</table>
 	<table width="75%" align="center" border>

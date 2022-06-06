@@ -7,18 +7,15 @@
 </head>
 
 <body>
-	<%@ include file="top.jsp"%>
-	
 	<%!
 	String movie_title, adult_only, adult_only_str, start_time, end_time;
 	Date movie_date;
 	int theater_id, running_movie_id;
 	%>
 
-	<table width="75%" align="center" bgcolor="#FFFF99" border>
-		<td><div align="center">영화 예약</div></td>
-	</table>
-	<table width="75%" align="center" bgcolor="#FFFF99" border>
+	<%@include file="top.jsp"%>
+	<div style="line-height:250%" align="center"><b>--- 영화 목록 조회 ---</b></div>
+	<table width="75%" align="center" bgcolor="#dddcfe">
 		<colgroup>
 			<col style="width: 15%">
 			<col style="width: 15%">
@@ -29,13 +26,13 @@
 			<col style="width: 10%">
 		</colgroup>
 		<tr>
-			<td><div align="center">영화 제목</div></td>
-			<td><div align="center">청소년 관람</div></td>
-			<td><div align="center">상영 날짜</div></td>
-			<td><div align="center">상영 시작</div></td>
-			<td><div align="center">상영 종료</div></td>
-			<td><div align="center">상영관 번호</div></td>
-			<td><div align="center">예매</div></td>
+			<td><div align="center"><b>영화 제목</b></div></td>
+			<td><div align="center"><b>청소년 관람</b></div></td>
+			<td><div align="center"><b>상영 날짜</b></div></td>
+			<td><div align="center"><b>상영 시작</b></div></td>
+			<td><div align="center"><b>상영 종료</b></div></td>
+			<td><div align="center"><b>상영관 번호</b></div></td>
+			<td><div align="center"><b>예매</b></div></td>
 		</tr>
 	</table>
 
@@ -72,7 +69,7 @@
 		running_movie_id = rs.getInt("running_movie_id");
 	
 	%>
-	<table width="75%" align="center" bgcolor="#FFFFFF" border>
+	<table width="75%" align="center" bgcolor="#FFFFFF">
 		<colgroup>
 			<col style="width: 15%">
 			<col style="width: 15%">

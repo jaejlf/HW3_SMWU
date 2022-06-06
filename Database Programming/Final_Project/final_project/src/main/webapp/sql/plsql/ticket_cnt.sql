@@ -1,10 +1,12 @@
 CREATE OR REPLACE PROCEDURE ticket_cnt(
+	input_user_id IN VARCHAR2,
 	result OUT NUMBER
 )
 IS
 	CURSOR booking_list IS
 		SELECT running_movie_id
-		FROM BookingList;
+		FROM BookingList
+		WHERE user_id = input_user_id;
 	cnt NUMBER;
 
 BEGIN

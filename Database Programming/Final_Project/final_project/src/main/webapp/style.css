@@ -1,0 +1,15 @@
+table {
+	border: 0.5px solid ;
+	height: 30px;
+	font-size: 14px; 
+}
+
+th, td {
+	padding: 10px;
+}
+
+
+body{
+  font-family: "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  font-weight: 300;
+}

@@ -1,4 +1,5 @@
 CREATE OR REPLACE PROCEDURE get_movie_info(
+	input_movie_id IN NUMBER,
 	o_movie_title OUT VARCHAR2,
 	o_adult_only OUT CHAR,
 	o_movie_date OUT DATE,
@@ -11,7 +12,8 @@ IS
 BEGIN
 	SELECT movie_title, adult_only, movie_date, start_time, end_time
 		INTO Info.movie_title, Info.adult_only, Info.movie_date, Info.start_time, Info.end_time
-	FROM MovieInfoView;
+	FROM MovieInfoView
+	WHERE running_movie_id = input_movie_id ;
 	
 	o_movie_title := Info.movie_title;
 	o_adult_only := Info.adult_only;

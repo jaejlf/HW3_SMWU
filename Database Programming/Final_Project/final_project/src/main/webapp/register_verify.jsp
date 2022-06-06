@@ -18,7 +18,7 @@ String userPassword = request.getParameter("userPassword");
 String userBirthDate = request.getParameter("userBirthDate");
 String userName = request.getParameter("userName").trim();
 Statement stmt = myConn.createStatement();
-String mySQL = "call prc_register_verify(?, ?, ?, ?)";
+String mySQL = "call prc_register_verify(?,?,?,?)";
 
 try{
    PreparedStatement pstmt = myConn.prepareStatement(mySQL);

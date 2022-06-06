@@ -65,17 +65,13 @@
 				<td><div align="center"><%=date%></div></td>
 			</tr>
 			<tr>
-				<td><div align="center">생년월일 수정</div></td>
-				<td><div align="center"><input type="text" name="dateUpdate"></div></td>
-			</tr>
-			<tr>
 				<td><div align="center">비밀번호 수정</div></td>
 				<td><div align="center"><input type="password" name="pwdUpdate"></div></td>
 			</tr>
 			<tr>
 				<td colspan=2>
 					<div align="center">
-						<INPUT TYPE="SUBMIT" NAME="Submit" VALUE="생년월일, 비밀번호 수정">
+						<INPUT TYPE="SUBMIT" NAME="Submit" VALUE="비밀번호 수정">
 						<INPUT TYPE="RESET" VALUE="취소">
 					</div>
 				</td>

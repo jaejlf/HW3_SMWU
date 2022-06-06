@@ -113,7 +113,7 @@
 							<td><div align="center"><%=seat_id%></div></td>
 							<td>
 								<div align="center">
-									<form method="post" action="booking_cancle.jsp">
+									<form method="post" action="booking_cancel.jsp">
 										<input type="hidden" name="booking_id" value=<%=booking_id%>>
 										<input type="SUBMIT" value="예매 취소">
 									</form>

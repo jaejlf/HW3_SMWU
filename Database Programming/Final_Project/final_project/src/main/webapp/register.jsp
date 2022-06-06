@@ -6,13 +6,6 @@
 <title>영화 예매 시스템 회원가입</title>
 </head>
 <body>
-
-	<%!public static String KorChange(String inputValue) throws Exception {
-		if (inputValue == null)
-			return null;
-		else
-			return new String(inputValue.getBytes("EUC-KR"), "8859_1");
-	}%>
 	<link rel='stylesheet' href='style.css' />
 	<table width="75%" align="center" bgcolor="#938ffa">
 		<tr>

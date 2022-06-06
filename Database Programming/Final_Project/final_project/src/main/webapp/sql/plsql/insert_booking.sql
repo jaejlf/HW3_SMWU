@@ -5,7 +5,6 @@ CREATE OR REPLACE PROCEDURE Insert_Booking(
 	adult_only IN movie_info_table.adult_only %TYPE := null,
 	seat_id IN user_booking_table.seat_id%TYPE := null
 )
-
 IS
    book_id  NUMBER;
    book_exist NUMBER := -1;
@@ -14,6 +13,7 @@ IS
    no_adult_error EXCEPTION;
    no_user_error EXCEPTION;
    booking_info_error EXCEPTION;
+   
 BEGIN
    IF input_user is null THEN
       RAISE no_user_error; 

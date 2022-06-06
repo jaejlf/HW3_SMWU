@@ -2,7 +2,6 @@ CREATE OR REPLACE PROCEDURE prc_update_pwd (
 	input_user_id IN VARCHAR2,
 	input_pwd IN VARCHAR2
 )
-
 IS
 	err_pwd_length_ovf EXCEPTION;
 	err_pwd_length_udf EXCEPTION;

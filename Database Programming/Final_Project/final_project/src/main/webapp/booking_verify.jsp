@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="java.sql.*"%>
 <%
-// connect DB
 String dburl = "jdbc:oracle:thin:@localhost:1521:xe";
 String db_user = "db1814798";
 String db_pw = "ss2";
@@ -14,7 +13,6 @@ try {
 	System.err.println("SQLException: " + ex.getMessage());
 }
 
-// get Variables
 String[] seats = request.getParameterValues("seats");
 int run_id = Integer.parseInt(request.getParameter("running_movie_id"));
 int theater_id = Integer.parseInt(request.getParameter("theater_id"));
@@ -30,7 +28,6 @@ if (user_id == null) {
 	<%
 }
 
-// insert s
 CallableStatement cstmt = myConn.prepareCall("{call Insert_booking(?,?,?,?,?)}");
 cstmt.setString(1, user_id);
 cstmt.setInt(2, run_id);

@@ -12,7 +12,7 @@ BEGIN
    FROM USER_TABLE WHERE user_id =input_user;
 
    SELECT trunc(months_between(sysdate, birthday)/12)
-   INTO age
+  		INTO age
    FROM dual;
    RETURN age;
 END;

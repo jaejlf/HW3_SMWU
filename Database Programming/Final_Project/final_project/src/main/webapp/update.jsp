@@ -10,7 +10,6 @@
 
 <body>
 	<%@ include file="top.jsp"%>
-
 	<%!
 	String name, u_id;
 	Date date;
@@ -67,19 +66,11 @@
 			</tr>
 			<tr>
 				<td><div align="center">생년월일 수정</div></td>
-				<td>
-					<div align="center">
-						<input type="text" name="dateUpdate">
-					</div>
-				</td>
+				<td><div align="center"><input type="text" name="dateUpdate"></div></td>
 			</tr>
 			<tr>
 				<td><div align="center">비밀번호 수정</div></td>
-				<td>
-					<div align="center">
-						<input type="password" name="pwdUpdate">
-					</div>
-				</td>
+				<td><div align="center"><input type="password" name="pwdUpdate"></div></td>
 			</tr>
 			<tr>
 				<td colspan=2>

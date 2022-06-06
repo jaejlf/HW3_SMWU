@@ -63,6 +63,7 @@
 		try {
 			stmt.execute(bookingListViewSQL);
 			stmt.execute(movieInfoViewSQL);
+			
 			ResultSet bookingList = stmt.executeQuery("select * from BookingList where user_id = '" + user_id + "'");
 			if (bookingList != null) {
 				while (bookingList.next()) {
@@ -144,9 +145,9 @@
 	} else {
 	%>
 	<table width="75%" align="center">
-	<tr>
-		<td align="center">로그인한 후 사용하세요.</td>
-	</tr>
+		<tr>
+			<td align="center">로그인한 후 사용하세요.</td>
+		</tr>
 	</table>
 	
 	<%

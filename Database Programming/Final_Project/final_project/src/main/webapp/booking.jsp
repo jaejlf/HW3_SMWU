@@ -15,7 +15,6 @@ div {
 <body>
 	<%@ include file="top.jsp"%>
 	<%
-	// connect DB
 	String dburl = "jdbc:oracle:thin:@localhost:1521:xe";
 	String db_user = "db1814798";
 	String db_pw = "ss2";
@@ -29,7 +28,6 @@ div {
 	}
 	Statement stmt = myConn.createStatement();
 
-	// query
 	int run_id = Integer.parseInt(request.getParameter("running_movie_id"));
 	int theater_id = Integer.parseInt(request.getParameter("theater_id"));
 	String adult_only = request.getParameter("adult_only");

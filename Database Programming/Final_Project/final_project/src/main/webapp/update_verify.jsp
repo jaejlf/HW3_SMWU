@@ -18,7 +18,7 @@ String pwdUpdate = request.getParameter("pwdUpdate");
 String session_id = (String) session.getAttribute("user"); 
 
 Statement stmt = myConn.createStatement();
-String mySQL="call prc_update_pwd(?, ?)";
+String mySQL="call prc_update_pwd(?,?)";
 
 try{
 	PreparedStatement pstmt = myConn.prepareStatement(mySQL);
@@ -50,7 +50,7 @@ catch(SQLException e){
    %>
    <script>
       alert("실패 : " + "<%=sMessage%>");
-      location.href="main.jsp";
+      location.href = "main.jsp";
    </script>
    <%
 }

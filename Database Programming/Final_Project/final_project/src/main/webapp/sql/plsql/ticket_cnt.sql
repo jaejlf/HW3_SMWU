@@ -11,10 +11,9 @@ IS
 
 BEGIN
 	OPEN booking_list;
-	
 	LOOP
 		FETCH booking_list INTO cnt;
-		EXIT WHEN booking_list %NOTFOUND;
+		EXIT WHEN booking_list%NOTFOUND;
 	END LOOP;
 	
 	result := booking_list%ROWCOUNT;

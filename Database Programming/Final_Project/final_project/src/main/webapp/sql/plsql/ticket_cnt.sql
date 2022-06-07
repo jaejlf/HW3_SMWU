@@ -1,4 +1,4 @@
-CREATE OR REPLACE PROCEDURE ticket_cnt(
+CREATE OR REPLACE PROCEDURE ticket_cnt (
 	input_user_id IN VARCHAR2,
 	result OUT NUMBER
 )

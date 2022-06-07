@@ -12,13 +12,13 @@ BEGIN
 	--비밀번호 입력 오류
 	--4자리 초과, 2자리 미만, 입력 x, 빈 칸 포함하여 입력한 경우 
 	IF(LENGTH(input_pwd) > 4) 
-		THEN raise err_pwd_length_ovf;
+		THEN RAISE err_pwd_length_ovf;
 	ELSIF(LENGTH(input_pwd) < 2) 
-		THEN raise err_pwd_length_udf;
+		THEN RAISE err_pwd_length_udf;
 	ELSIF(LENGTH(input_pwd) IS NULL) 
-		THEN raise err_pwd_length_null;
+		THEN RAISE err_pwd_length_null;
 	ELSIF(INSTR(input_pwd, ' ') != 0)
-		THEN raise err_pwd_blank;
+		THEN RAISE err_pwd_blank;
 	END IF;
 
 	UPDATE user_table SET pwd = input_pwd WHERE user_id = input_user_id;

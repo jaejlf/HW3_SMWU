@@ -27,33 +27,33 @@ BEGIN
 	--아이디 입력 오류
 	--4자리 초과, 2자리 미만, 입력 x, 빈 칸 포함하여 입력한 경우 
 	IF(LENGTH(input_id) > 4) 
-		THEN raise err_id_length_ovf;
+		THEN RAISE err_id_length_ovf;
 	ELSIF(LENGTH(input_id) < 2) 
-		THEN raise err_id_length_udf;
+		THEN RAISE err_id_length_udf;
 	ELSIF(LENGTH(input_id) IS NULL) 
-		THEN raise err_id_length_null;
+		THEN RAISE err_id_length_null;
 	ELSIF(INSTR(input_id, ' ') != 0)
-		THEN raise err_id_blank;
+		THEN RAISE err_id_blank;
 	END IF;
 	
 	--비밀번호 입력 오류
 	--4자리 초과, 2자리 미만, 입력 x, 빈 칸 포함하여 입력한 경우 
 	IF(LENGTH(input_pwd) > 4) 
-		THEN raise err_pwd_length_ovf;
+		THEN RAISE err_pwd_length_ovf;
 	ELSIF(LENGTH(input_pwd) < 2) 
-		THEN raise err_pwd_length_udf;
+		THEN RAISE err_pwd_length_udf;
 	ELSIF(LENGTH(input_pwd) IS NULL) 
-		THEN raise err_pwd_length_null;
+		THEN RAISE err_pwd_length_null;
 	ELSIF(INSTR(input_pwd, ' ') != 0)
-		THEN raise err_pwd_blank;
+		THEN RAISE err_pwd_blank;
 	END IF;
 	
 	--생년월일 입력 오류
 	--6자리가 아닌 경우, 존재하지 않는 날짜인 경우(ora-01861 발생) 
 	IF(LENGTH(input_birthdate) != 6) 
-		THEN raise err_birthdate_length;
+		THEN RAISE err_birthdate_length;
 	ELSIF(LENGTH(input_birthdate) IS NULL) 
-		THEN raise err_birthdate_length;
+		THEN RAISE err_birthdate_length;
 	END IF;
 	
 	SELECT TO_DATE(input_birthdate) INTO check_bd FROM dual;
@@ -61,11 +61,11 @@ BEGIN
 	--이름 입력 오류
 	--입력 x, 빈 칸 포함하여 입력한 경우, 15자 이상 입력한 경우
 	IF(LENGTH(input_name) > 14) 
-		THEN raise err_name_length_ovf;
+		THEN RAISE err_name_length_ovf;
 	ELSIF(LENGTH(input_name) IS NULL) 
-		THEN raise err_name_length_null;
+		THEN RAISE err_name_length_null;
 	ELSIF(INSTR(input_name, ' ') != 0)
-		THEN raise err_name_blank;
+		THEN RAISE err_name_blank;
 	END IF;
 	
 	--insert 오류

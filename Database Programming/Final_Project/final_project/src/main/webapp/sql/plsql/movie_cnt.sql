@@ -1,5 +1,6 @@
 CREATE OR REPLACE PROCEDURE movie_cnt (
-	result OUT NUMBER
+	result_movie OUT NUMBER,
+	result_run OUT NUMBER
 )
 IS
 	CURSOR movie_list IS
@@ -13,8 +14,12 @@ BEGIN
 		EXIT WHEN movie_list%NOTFOUND;
 	END LOOP;
 	
-	result := movie_list%ROWCOUNT;
+	result_movie := movie_list%ROWCOUNT;
 	CLOSE movie_list;
+
+	Select count(*) 
+  Into result_run
+  from running_movie_table;
 
 	EXCEPTION
 	WHEN OTHERS THEN

@@ -14,11 +14,11 @@ IS
    booking_info_error EXCEPTION;
    
 BEGIN
-   IF input_user is null THEN
+   IF input_user IS NULL THEN
       RAISE no_user_error; 
    END IF;
  
-   IF run_id is null OR theater_id IS null OR adult_only IS null OR seat_id IS null THEN
+   IF run_id IS NULL OR theater_id IS NULL OR adult_only IS NULL OR seat_id IS NULL THEN
       RAISE booking_info_error; 
    END IF;
 

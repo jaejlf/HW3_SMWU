@@ -1,8 +1,10 @@
-CREATE TABLE RUNNING_MOVIE_TABLE (
-	running_movie_id NUMBER(3) PRIMARY KEY,
-	movie_id NUMBER(3) REFERENCES Movie_Info_Table(movie_id),
-	theater_id NUMBER(3) NOT NULL,
-	start_time VARCHAR2(10) NOT NULL,
-	end_time VARCHAR2(10) NOT NULL,
-	movie_date DATE NOT NULL	
+CREATE TABLE RUNNING_MOVIE_TABLE
+(
+    running_movie_id    NUMBER(3)       NOT NULL, 
+    movie_id            NUMBER(3)       NOT NULL, 
+    theater_id          NUMBER(3)       NOT NULL, 
+    start_time          VARCHAR2(10)    NOT NULL, 
+    end_time            VARCHAR2(10)    NOT NULL, 
+    movie_date          DATE            NOT NULL, 
+    PRIMARY KEY (running_movie_id)
 );

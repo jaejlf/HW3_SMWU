@@ -23,9 +23,20 @@ if (user_id == null) {
 	%>
 	<script>
 		alert("로그인 후 예매하세요.");
-		location.href = "login.jsp"
+		location.href = "login.jsp";
 	</script>
 	<%
+}
+
+
+if (seats == null) {
+	%>
+	<script>
+		alert("좌석을 선택하세요.");
+		location.href="booking.jsp?running_movie_id=" + <%=run_id%> + "&theater_id=" + <%=theater_id%> + "&adult_only=" + <%=adult_only%>;
+	</script>
+	<%
+	return;
 }
 
 CallableStatement cstmt = myConn.prepareCall("{call Insert_booking(?,?,?,?,?)}");

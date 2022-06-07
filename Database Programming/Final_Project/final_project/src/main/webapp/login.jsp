@@ -41,7 +41,7 @@
 				<td colspan=2>
 					<div align="center">
 						<INPUT TYPE="SUBMIT" NAME="Submit" VALUE="로그인">
-						<INPUT TYPE="RESET" VALUE="취소">
+						<INPUT TYPE="BUTTON" VALUE="취소" onclick="location.href = 'main.jsp'">
 					</div>
 				</td>
 			</tr>

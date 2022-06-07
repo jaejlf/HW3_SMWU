@@ -5,22 +5,22 @@ CREATE OR REPLACE PROCEDURE prc_register_verify(
 	input_name IN VARCHAR2
 )
 IS
-err_id_length_ovf EXCEPTION;
-err_id_length_udf EXCEPTION;
-err_id_length_null EXCEPTION;
-err_id_blank EXCEPTION;
-
-err_pwd_length_ovf EXCEPTION;
-err_pwd_length_udf EXCEPTION;
-err_pwd_length_null EXCEPTION;
-err_pwd_blank EXCEPTION;
-
-err_birthdate_length EXCEPTION;
-check_bd DATE;
-
-err_name_length_ovf EXCEPTION;
-err_name_length_null EXCEPTION;
-err_name_blank EXCEPTION;
+	err_id_length_ovf EXCEPTION;
+	err_id_length_udf EXCEPTION;
+	err_id_length_null EXCEPTION;
+	err_id_blank EXCEPTION;
+	
+	err_pwd_length_ovf EXCEPTION;
+	err_pwd_length_udf EXCEPTION;
+	err_pwd_length_null EXCEPTION;
+	err_pwd_blank EXCEPTION;
+	
+	err_birthdate_length EXCEPTION;
+	check_bd DATE;
+	
+	err_name_length_ovf EXCEPTION;
+	err_name_length_null EXCEPTION;
+	err_name_blank EXCEPTION;
 
 
 BEGIN
@@ -35,7 +35,7 @@ BEGIN
 	ELSIF(INSTR(input_id, ' ') != 0)
 		THEN raise err_id_blank;
 	END IF;
-
+	
 	--비밀번호 입력 오류
 	--4자리 초과, 2자리 미만, 입력 x, 빈 칸 포함하여 입력한 경우 
 	IF(LENGTH(input_pwd) > 4) 
@@ -47,12 +47,12 @@ BEGIN
 	ELSIF(INSTR(input_pwd, ' ') != 0)
 		THEN raise err_pwd_blank;
 	END IF;
-
+	
 	--생년월일 입력 오류
 	--6자리가 아닌 경우, 존재하지 않는 날짜인 경우(ora-01861 발생) 
 	IF(LENGTH(input_birthdate) != 6) 
 		THEN raise err_birthdate_length;
-	ELSIF(LENGTH(input_birthdate) IS NULL)
+	ELSIF(LENGTH(input_birthdate) IS NULL) 
 		THEN raise err_birthdate_length;
 	END IF;
 	
@@ -70,7 +70,7 @@ BEGIN
 	
 	--insert 오류
 	INSERT INTO user_table VALUES(input_id, input_pwd, check_bd, input_name);
-
+	INSERT INTO user_table_backup VALUES(input_id, input_pwd, check_bd, input_name);
 
 	EXCEPTION
 	WHEN err_id_length_ovf

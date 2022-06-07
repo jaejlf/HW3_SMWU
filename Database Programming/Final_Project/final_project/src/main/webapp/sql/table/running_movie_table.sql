@@ -1,4 +1,4 @@
-CREATE TABLE Running_Movie_Table (
+CREATE TABLE RUNNING_MOVIE_TABLE (
 	running_movie_id NUMBER(3) PRIMARY KEY,
 	movie_id NUMBER(3) REFERENCES Movie_Info_Table(movie_id),
 	theater_id NUMBER(3) NOT NULL,

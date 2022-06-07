@@ -4,7 +4,6 @@
 <html>
 
 <head>
-<meta charset="EUC-KR">
 <title>예매 내역 조회</title>
 </head>
 

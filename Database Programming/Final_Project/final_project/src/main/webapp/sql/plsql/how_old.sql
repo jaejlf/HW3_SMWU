@@ -1,4 +1,4 @@
-CREATE OR REPLACE FUNCTION how_old(
+CREATE OR REPLACE FUNCTION how_old (
 	input_user IN user_table.user_id%TYPE
 )
 RETURN NUMBER

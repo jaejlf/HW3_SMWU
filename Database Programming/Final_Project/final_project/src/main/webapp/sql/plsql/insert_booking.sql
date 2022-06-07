@@ -1,4 +1,4 @@
-CREATE OR REPLACE PROCEDURE Insert_Booking(
+CREATE OR REPLACE PROCEDURE insert_booking (
 	input_user IN user_booking_table.user_id%TYPE := null,
 	run_id IN user_booking_table.running_movie_id%TYPE := null,
 	theater_id IN user_booking_table.theater_id%TYPE := null,
@@ -7,7 +7,6 @@ CREATE OR REPLACE PROCEDURE Insert_Booking(
 )
 IS
    book_id  NUMBER;
-   book_exist NUMBER := -1;
    age NUMBER;
 
    no_adult_error EXCEPTION;
@@ -23,7 +22,6 @@ BEGIN
       RAISE booking_info_error; 
    END IF;
 
-   -- 청불
    IF adult_only = '1' THEN
       age := how_old(input_user);
       IF age<19 THEN 
@@ -31,12 +29,11 @@ BEGIN
       END IF; 
    END IF;
 
-   -- book_id
    SELECT MAX(booking_id)+1
    INTO book_id
    FROM user_booking_table;
 
-   INSERT INTO user_booking_table VALUES(input_user, run_id, theater_id, seat_id, book_id);
+   INSERT INTO user_booking_table VALUES(book_id, input_user, run_id, theater_id, seat_id);
    COMMIT;
    
    EXCEPTION 

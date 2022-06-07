@@ -34,12 +34,10 @@ div {
 
 	String seatSQL = "select seat_id from SEAT_INFO_TABLE where seat_id NOT IN (select seat_id from USER_BOOKING_TABLE where running_movie_id = "
 			+ run_id + ") and theater_id=" + theater_id + " order by seat_id";
-
+	
 	try {
 		ResultSet result_seats = stmt.executeQuery(seatSQL);
-
 		if (!result_seats.next()) {
-			// exception 매진
 			%>
 			<script>
 				alert("좌석이 매진되었습니다.");
@@ -47,7 +45,6 @@ div {
 			</script>
 			<%
 		} else {
-			// 자리 선택s
 			%>
 			<div>
 				<br>

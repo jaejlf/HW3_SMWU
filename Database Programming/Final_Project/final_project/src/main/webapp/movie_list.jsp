@@ -98,9 +98,21 @@
 			</td>
 		</tr>
 	</table>
+	
 	<%
-}
+	}
+	CallableStatement cstmt_cnt = myConn.prepareCall("{call movie_cnt (?)}");
+	cstmt_cnt.registerOutParameter(1, java.sql.Types.INTEGER); 
+	cstmt_cnt.execute();
+    int cnt = cstmt_cnt.getInt(1);
+	cstmt_cnt.close();	
 
+	%>
+	<table width="75%" align="center" bgcolor="#dddcfe">
+		<td><div align="center"><b>예매 가능한 영화는 총 <%=cnt%>편 입니다.</b></div></td>
+	</table>
+	<%
+	
 stmt.close(); 
 myConn.close(); 
 %>

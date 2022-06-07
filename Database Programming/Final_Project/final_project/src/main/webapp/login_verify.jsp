@@ -27,7 +27,6 @@ try{
 		location.href="main.jsp";
 	</script>
 	<%
-
 }
 catch(SQLException e){
 	%>

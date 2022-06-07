@@ -1,5 +1,5 @@
 CREATE OR REPLACE PROCEDURE ticket_cnt (
-	input_user_id IN VARCHAR2,
+	input_user_id IN user_table.user_id%TYPE,
 	result OUT NUMBER
 )
 IS

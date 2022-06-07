@@ -19,3 +19,5 @@ ALTER TABLE USER_BOOKING_TABLE
 ALTER TABLE USER_BOOKING_TABLE
     ADD CONSTRAINT UFK_theater_seat_id_FK FOREIGN KEY (theater_id, seat_id)
         REFERENCES SEAT_INFO_TABLE (theater_id, seat_id);
+
+ALTER TABLE USER_BOOKING_TABLE ADD UNIQUE (running_movie_id, seat_id);

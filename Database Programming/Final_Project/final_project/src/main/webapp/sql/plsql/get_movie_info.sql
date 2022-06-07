@@ -1,6 +1,6 @@
 CREATE OR REPLACE PROCEDURE get_movie_info (
-	input_movie_id IN NUMBER,
-	o_movie_title OUT VARCHAR2,
+	input_movie_id IN movie_info_table.movie_id%TYPE,
+	o_movie_title OUT movie_info_table.movie_title%TYPE,
 	o_adult_only OUT VARCHAR2,
 	o_movie_date OUT DATE,
 	o_start_time OUT VARCHAR2,

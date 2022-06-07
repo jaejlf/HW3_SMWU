@@ -1,9 +1,9 @@
 CREATE OR REPLACE PROCEDURE insert_booking (
-	input_user IN user_booking_table.user_id%TYPE := null,
-	run_id IN user_booking_table.running_movie_id%TYPE := null,
-	theater_id IN user_booking_table.theater_id%TYPE := null,
-	adult_only IN movie_info_table.adult_only %TYPE := null,
-	seat_id IN user_booking_table.seat_id%TYPE := null
+	input_user IN user_booking_table.user_id%TYPE,
+	run_id IN user_booking_table.running_movie_id%TYPE,
+	theater_id IN user_booking_table.theater_id%TYPE,
+	adult_only IN movie_info_table.adult_only %TYPE,
+	seat_id IN user_booking_table.seat_id%TYPE 
 )
 IS
    book_id  NUMBER;

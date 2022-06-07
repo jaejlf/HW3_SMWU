@@ -28,7 +28,7 @@ try{
    
    %>
    <script>
-      alert("수정 완료.");
+      alert("수정 완료");
       location.href = "main.jsp";
    </script>
    <%

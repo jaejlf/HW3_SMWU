@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head> <meta charset="EUC-KR">
-<title>영화 예매 시스템</title> </head>
+<head>
+<meta charset="UTF-8">
+<title>영화 예매 시스템</title>
+</head>
 
 <body>
 	<%@include file="top.jsp"%>

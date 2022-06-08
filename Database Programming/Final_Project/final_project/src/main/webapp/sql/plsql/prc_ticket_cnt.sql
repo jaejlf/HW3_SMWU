@@ -15,10 +15,10 @@ BEGIN
 	END LOOP;
 	
 	result := cnt;
-	DBMS_OUTPUT.PUT_LINE('Л╢² Л≤┬К╖╓ М▀╟Л╪⌠ Л┬≤ : ' || result);
+	DBMS_OUTPUT.PUT_LINE('ця ©╧╦е ф╪до ╪Ж : ' || result);
 
 	EXCEPTION
 	WHEN OTHERS THEN
-		DBMS_OUTPUT.PUT_LINE('Л≈░К÷╛К╟°Л┐²');
+		DBMS_OUTPUT.PUT_LINE('©║╥╞╧ъ╩Щ');
 END;
 /

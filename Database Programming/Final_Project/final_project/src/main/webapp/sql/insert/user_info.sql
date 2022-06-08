@@ -1,9 +1,9 @@
-INSERT INTO USER_TABLE (user_id, pwd, birthdate, name) VALUES ('aaa', '1234', '1998-01-01', 'ÍπÄÏÑ±Ïù∏');
-INSERT INTO USER_TABLE (user_id, pwd, birthdate, name) VALUES ('bbb', '1234', '1999-01-01', 'ÏµúÏÑ±Ïù∏');
-INSERT INTO USER_TABLE (user_id, pwd, birthdate, name) VALUES ('ccc', '1234', '2010-01-01', 'Î∞ïÏ¥àÎî©');
-INSERT INTO USER_TABLE (user_id, pwd, birthdate, name) VALUES ('DDD', '1234', '2009-12-31', 'Ïù¥Ï¥àÎî©');
+INSERT INTO USER_TABLE (user_id, pwd, birthdate, name) VALUES ('aaa', '1234', '1998-01-01', '±Ëº∫¿Œ');
+INSERT INTO USER_TABLE (user_id, pwd, birthdate, name) VALUES ('bbb', '1234', '1999-01-01', '√÷º∫¿Œ');
+INSERT INTO USER_TABLE (user_id, pwd, birthdate, name) VALUES ('ccc', '1234', '2010-01-01', 'π⁄√ µ˘');
+INSERT INTO USER_TABLE (user_id, pwd, birthdate, name) VALUES ('DDD', '1234', '2009-12-31', '¿Ã√ µ˘');
 
-INSERT INTO USER_TABLE_BACKUP (user_id, pwd, birthdate, name) VALUES ('aaa', '1234', '1998-01-01', 'ÍπÄÏÑ±Ïù∏');
-INSERT INTO USER_TABLE_BACKUP (user_id, pwd, birthdate, name) VALUES ('bbb', '1234', '1999-01-01', 'ÏµúÏÑ±Ïù∏');
-INSERT INTO USER_TABLE_BACKUP (user_id, pwd, birthdate, name) VALUES ('ccc', '1234', '2010-01-01', 'Î∞ïÏ¥àÎî©');
-INSERT INTO USER_TABLE_BACKUP (user_id, pwd, birthdate, name) VALUES ('DDD', '1234', '2009-12-31', 'Ïù¥Ï¥àÎî©');
+INSERT INTO USER_TABLE_BACKUP (user_id, pwd, birthdate, name) VALUES ('aaa', '1234', '1998-01-01', '±Ëº∫¿Œ');
+INSERT INTO USER_TABLE_BACKUP (user_id, pwd, birthdate, name) VALUES ('bbb', '1234', '1999-01-01', '√÷º∫¿Œ');
+INSERT INTO USER_TABLE_BACKUP (user_id, pwd, birthdate, name) VALUES ('ccc', '1234', '2010-01-01', 'π⁄√ µ˘');
+INSERT INTO USER_TABLE_BACKUP (user_id, pwd, birthdate, name) VALUES ('DDD', '1234', '2009-12-31', '¿Ã√ µ˘');

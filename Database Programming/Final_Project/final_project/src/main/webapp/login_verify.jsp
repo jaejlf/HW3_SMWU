@@ -12,11 +12,14 @@ Connection myConn = DriverManager.getConnection(dburl, user, passwd);
 String userID=request.getParameter("userID");
 String userPassword=request.getParameter("userPassword");
 
-Statement stmt = myConn.createStatement();
-String mySQL="select user_id from user_table where user_id='" + userID + "'and pwd='" + userPassword + "'";
+PreparedStatement pstmt = null;
+String mySQL="select user_id from user_table where user_id= ? and pwd= ?";
 
 try{
-	ResultSet rs = stmt.executeQuery(mySQL);
+	pstmt = myConn.prepareStatement(mySQL);
+	pstmt.setString(1, userID);
+	pstmt.setString(2, userPassword);
+	ResultSet rs = pstmt.executeQuery();
 	rs.next();
 	String user_id = rs.getString("user_id");
 	session.setAttribute("user", user_id);
@@ -36,6 +39,6 @@ catch(SQLException e){
 	</script>
 	<%
 }
-stmt.close();
+pstmt.close();
 myConn.close();
 %>

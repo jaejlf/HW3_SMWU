@@ -9,8 +9,8 @@ IS
 	err_pwd_blank EXCEPTION;
 
 BEGIN
-	--ºñ¹Ð¹øÈ£ ÀÔ·Â ¿À·ù
-	--4ÀÚ¸® ÃÊ°ú, 2ÀÚ¸® ¹Ì¸¸, ÀÔ·Â x, ºó Ä­ Æ÷ÇÔÇÏ¿© ÀÔ·ÂÇÑ °æ¿ì 
+	--ë¹„ë°€ë²ˆí˜¸ ìž…ë ¥ ì˜¤ë¥˜
+	--4ìžë¦¬ ì´ˆê³¼, 2ìžë¦¬ ë¯¸ë§Œ, ìž…ë ¥ x, ë¹ˆ ì¹¸ í¬í•¨í•˜ì—¬ ìž…ë ¥í•œ ê²½ìš° 
 	IF(LENGTH(input_pwd) > 4) 
 		THEN RAISE err_pwd_length_ovf;
 	ELSIF(LENGTH(input_pwd) < 2) 
@@ -25,12 +25,12 @@ BEGIN
 	
 	EXCEPTION
 	WHEN err_pwd_length_ovf
-		THEN raise_application_error(-20504, 'ºñ¹Ð¹øÈ£´Â 4ÀÚ¸® ¼ö ÀÌÇÏÀÔ´Ï´Ù');
+		THEN raise_application_error(-20504, 'ë¹„ë°€ë²ˆí˜¸ëŠ” 4ìžë¦¬ ìˆ˜ ì´í•˜ìž…ë‹ˆë‹¤');
 	WHEN err_pwd_length_udf
-		THEN raise_application_error(-20505, 'ºñ¹Ð¹øÈ£´Â 2ÀÚ¸® ¼ö ÀÌ»óÀÔ´Ï´Ù');
+		THEN raise_application_error(-20505, 'ë¹„ë°€ë²ˆí˜¸ëŠ” 2ìžë¦¬ ìˆ˜ ì´ìƒìž…ë‹ˆë‹¤');
 	WHEN err_pwd_length_null
-		THEN raise_application_error(-20506, 'ºñ¹Ð¹øÈ£°¡ ÀÔ·ÂµÇÁö ¾Ê¾Ò½À´Ï´Ù');
+		THEN raise_application_error(-20506, 'ë¹„ë°€ë²ˆí˜¸ê°€ ìž…ë ¥ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤');
 	WHEN err_pwd_blank
-		THEN raise_application_error(-20509, 'ºñ¹Ð¹øÈ£¿¡´Â °ø¹éÀÌ Æ÷ÇÔµÉ ¼ö ¾ø½À´Ï´Ù');
+		THEN raise_application_error(-20509, 'ë¹„ë°€ë²ˆí˜¸ì—ëŠ” ê³µë°±ì´ í¬í•¨ë  ìˆ˜ ì—†ìŠµë‹ˆë‹¤');
 END;
 /

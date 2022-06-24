@@ -38,10 +38,10 @@ BEGIN
    
    EXCEPTION 
    WHEN no_adult_error 
-     THEN RAISE_APPLICATION_ERROR(-20001,'ผบภฮ พฦดิ');
+     THEN RAISE_APPLICATION_ERROR(-20001,'์ฑ์ธ ์•๋');
    WHEN no_user_error 
-     THEN RAISE_APPLICATION_ERROR(-20002,'ฟนธลภฺ มธภ็ พศวิ');
+     THEN RAISE_APPLICATION_ERROR(-20002,'์๋งค์ ์กด์ฌ ์•ํ•จ');
    WHEN booking_info_error 
-     THEN RAISE_APPLICATION_ERROR(-20003,'ฟนธลมคบธ ภิทยฐช พ๘ภฝ');
+     THEN RAISE_APPLICATION_ERROR(-20003,'์๋งค์ •๋ณด ์…๋ ฅ๊ฐ’ ์—์');
 END;
 /

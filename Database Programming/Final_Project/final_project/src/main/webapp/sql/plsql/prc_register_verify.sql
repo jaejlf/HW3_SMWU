@@ -24,8 +24,8 @@ IS
 
 
 BEGIN
-	--¾ÆÀÌµğ ÀÔ·Â ¿À·ù
-	--4ÀÚ¸® ÃÊ°ú, 2ÀÚ¸® ¹Ì¸¸, ÀÔ·Â x, ºó Ä­ Æ÷ÇÔÇÏ¿© ÀÔ·ÂÇÑ °æ¿ì 
+	--ì•„ì´ë”” ì…ë ¥ ì˜¤ë¥˜
+	--4ìë¦¬ ì´ˆê³¼, 2ìë¦¬ ë¯¸ë§Œ, ì…ë ¥ x, ë¹ˆ ì¹¸ í¬í•¨í•˜ì—¬ ì…ë ¥í•œ ê²½ìš° 
 	IF(LENGTH(input_id) > 4) 
 		THEN RAISE err_id_length_ovf;
 	ELSIF(LENGTH(input_id) < 2) 
@@ -36,8 +36,8 @@ BEGIN
 		THEN RAISE err_id_blank;
 	END IF;
 	
-	--ºñ¹Ğ¹øÈ£ ÀÔ·Â ¿À·ù
-	--4ÀÚ¸® ÃÊ°ú, 2ÀÚ¸® ¹Ì¸¸, ÀÔ·Â x, ºó Ä­ Æ÷ÇÔÇÏ¿© ÀÔ·ÂÇÑ °æ¿ì 
+	--ë¹„ë°€ë²ˆí˜¸ ì…ë ¥ ì˜¤ë¥˜
+	--4ìë¦¬ ì´ˆê³¼, 2ìë¦¬ ë¯¸ë§Œ, ì…ë ¥ x, ë¹ˆ ì¹¸ í¬í•¨í•˜ì—¬ ì…ë ¥í•œ ê²½ìš° 
 	IF(LENGTH(input_pwd) > 4) 
 		THEN RAISE err_pwd_length_ovf;
 	ELSIF(LENGTH(input_pwd) < 2) 
@@ -48,8 +48,8 @@ BEGIN
 		THEN RAISE err_pwd_blank;
 	END IF;
 	
-	--»ı³â¿ùÀÏ ÀÔ·Â ¿À·ù
-	--6ÀÚ¸®°¡ ¾Æ´Ñ °æ¿ì, Á¸ÀçÇÏÁö ¾Ê´Â ³¯Â¥ÀÎ °æ¿ì(ora-01861 ¹ß»ı) 
+	--ìƒë…„ì›”ì¼ ì…ë ¥ ì˜¤ë¥˜
+	--6ìë¦¬ê°€ ì•„ë‹Œ ê²½ìš°, ì¡´ì¬í•˜ì§€ ì•ŠëŠ” ë‚ ì§œì¸ ê²½ìš°(ora-01861 ë°œìƒ) 
 	IF(LENGTH(input_birthdate) != 6) 
 		THEN RAISE err_birthdate_length;
 	ELSIF(LENGTH(input_birthdate) IS NULL) 
@@ -58,8 +58,8 @@ BEGIN
 	
 	SELECT TO_DATE(input_birthdate) INTO check_bd FROM dual;
 	
-	--ÀÌ¸§ ÀÔ·Â ¿À·ù
-	--ÀÔ·Â x, ºó Ä­ Æ÷ÇÔÇÏ¿© ÀÔ·ÂÇÑ °æ¿ì, 15ÀÚ ÀÌ»ó ÀÔ·ÂÇÑ °æ¿ì
+	--ì´ë¦„ ì…ë ¥ ì˜¤ë¥˜
+	--ì…ë ¥ x, ë¹ˆ ì¹¸ í¬í•¨í•˜ì—¬ ì…ë ¥í•œ ê²½ìš°, 15ì ì´ìƒ ì…ë ¥í•œ ê²½ìš°
 	IF(LENGTH(input_name) > 14) 
 		THEN RAISE err_name_length_ovf;
 	ELSIF(LENGTH(input_name) IS NULL) 
@@ -68,34 +68,34 @@ BEGIN
 		THEN RAISE err_name_blank;
 	END IF;
 	
-	--insert ¿À·ù
+	--insert ì˜¤ë¥˜
 	INSERT INTO user_table VALUES(input_id, input_pwd, check_bd, input_name);
 	INSERT INTO user_table_backup VALUES(input_id, input_pwd, check_bd, input_name);
 
 	EXCEPTION
 	WHEN err_id_length_ovf
-		THEN raise_application_error(-20501, '¾ÆÀÌµğ´Â 4ÀÚ¸® ¼ö ÀÌÇÏÀÔ´Ï´Ù');
+		THEN raise_application_error(-20501, 'ì•„ì´ë””ëŠ” 4ìë¦¬ ìˆ˜ ì´í•˜ì…ë‹ˆë‹¤');
 	WHEN err_id_length_udf
-		THEN raise_application_error(-20502, '¾ÆÀÌµğ´Â 2ÀÚ¸® ¼ö ÀÌ»óÀÔ´Ï´Ù');
+		THEN raise_application_error(-20502, 'ì•„ì´ë””ëŠ” 2ìë¦¬ ìˆ˜ ì´ìƒì…ë‹ˆë‹¤');
 	WHEN err_id_length_null
-		THEN raise_application_error(-20503, '¾ÆÀÌµğ°¡ ÀÔ·ÂµÇÁö ¾Ê¾Ò½À´Ï´Ù');
+		THEN raise_application_error(-20503, 'ì•„ì´ë””ê°€ ì…ë ¥ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤');
 	WHEN err_pwd_length_ovf
-		THEN raise_application_error(-20504, 'ºñ¹Ğ¹øÈ£´Â 4ÀÚ¸® ¼ö ÀÌÇÏÀÔ´Ï´Ù');
+		THEN raise_application_error(-20504, 'ë¹„ë°€ë²ˆí˜¸ëŠ” 4ìë¦¬ ìˆ˜ ì´í•˜ì…ë‹ˆë‹¤');
 	WHEN err_pwd_length_udf
-		THEN raise_application_error(-20505, 'ºñ¹Ğ¹øÈ£´Â 2ÀÚ¸® ¼ö ÀÌ»óÀÔ´Ï´Ù');
+		THEN raise_application_error(-20505, 'ë¹„ë°€ë²ˆí˜¸ëŠ” 2ìë¦¬ ìˆ˜ ì´ìƒì…ë‹ˆë‹¤');
 	WHEN err_pwd_length_null
-		THEN raise_application_error(-20506, 'ºñ¹Ğ¹øÈ£°¡ ÀÔ·ÂµÇÁö ¾Ê¾Ò½À´Ï´Ù');
+		THEN raise_application_error(-20506, 'ë¹„ë°€ë²ˆí˜¸ê°€ ì…ë ¥ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤');
 	WHEN err_birthdate_length
-		THEN raise_application_error(-20507, 'ÀÔ·Â Çü½ÄÀº ex)990101 ÀÔ´Ï´Ù');
+		THEN raise_application_error(-20507, 'ì…ë ¥ í˜•ì‹ì€ ex)990101 ì…ë‹ˆë‹¤');
 	WHEN err_id_blank
-		THEN raise_application_error(-20508, '¾ÆÀÌµğ¿¡´Â °ø¹éÀÌ Æ÷ÇÔµÉ ¼ö ¾ø½À´Ï´Ù');
+		THEN raise_application_error(-20508, 'ì•„ì´ë””ì—ëŠ” ê³µë°±ì´ í¬í•¨ë  ìˆ˜ ì—†ìŠµë‹ˆë‹¤');
 	WHEN err_pwd_blank
-		THEN raise_application_error(-20509, 'ºñ¹Ğ¹øÈ£¿¡´Â °ø¹éÀÌ Æ÷ÇÔµÉ ¼ö ¾ø½À´Ï´Ù');
+		THEN raise_application_error(-20509, 'ë¹„ë°€ë²ˆí˜¸ì—ëŠ” ê³µë°±ì´ í¬í•¨ë  ìˆ˜ ì—†ìŠµë‹ˆë‹¤');
 	WHEN err_name_length_ovf
-		THEN raise_application_error(-20510, 'ÀÌ¸§Àº 15ÀÚ¸®¸¦ ³ÑÀ» ¼ö ¾ø½À´Ï´Ù.');
+		THEN raise_application_error(-20510, 'ì´ë¦„ì€ 15ìë¦¬ë¥¼ ë„˜ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.');
 	WHEN err_name_blank
-		THEN raise_application_error(-20511, 'ÀÌ¸§¿¡´Â °ø¹éÀÌ Æ÷ÇÔµÉ ¼ö ¾ø½À´Ï´Ù');
+		THEN raise_application_error(-20511, 'ì´ë¦„ì—ëŠ” ê³µë°±ì´ í¬í•¨ë  ìˆ˜ ì—†ìŠµë‹ˆë‹¤');
 	WHEN err_name_length_null
-		THEN raise_application_error(-20512, 'ÀÌ¸§ÀÌ ÀÔ·ÂµÇÁö ¾Ê¾Ò½À´Ï´Ù');
+		THEN raise_application_error(-20512, 'ì´ë¦„ì´ ì…ë ¥ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤');
 END;
 /

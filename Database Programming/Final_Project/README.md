@@ -47,7 +47,7 @@ SELECT seat_id FROM Seat_Info_Table
 WHERE seat_id NOT IN (
 SELECT seat_id
 FROM User_Booking_Table
-WHERE running_movie_id = "+ run_id + ") AND theater_id=" + theater_id + " order by seat_id";
+WHERE running_movie_id = "+ run_id + ") AND theater_id=" + theater_id + " ORDER BY seat_id";
 ```
 
 <br>
@@ -63,7 +63,7 @@ FROM Running_Movie_Table Run JOIN Movie_Info_Table Movie ON Run.movie_id = Movie
 ### 유저의 총 예매 티켓 수 Count PL/SQL (prc_ticket_cnt.sql)
 ```sql
 CREATE OR REPLACE PROCEDURE ticket_cnt (
-	input_user_id IN user_table.user_id%TYPE,
+	input_user_id IN User_Table.user_id%TYPE,
 	result OUT NUMBER
 )
 IS
@@ -95,18 +95,18 @@ END;
 ```sql
 CREATE OR REPLACE TRIGGER trg_change_pwd
 BEFORE
-UPDATE ON user_table
+UPDATE ON User_Table
 FOR EACH ROW
 BEGIN
-	UPDATE user_table_backup SET pwd = :old.pwd WHERE user_id = :old.user_id;
+	UPDATE User_Table_Backup SET pwd = :old.pwd WHERE user_id = :old.user_id;
 END;
 /
 
 ```
 ```sql
 CREATE OR REPLACE PROCEDURE prc_update_pwd (
-	input_user_id IN user_table.user_id%TYPE,
-	input_pwd IN user_table.pwd%TYPE
+	input_user_id IN User_Table.user_id%TYPE,
+	input_pwd IN User_Table.pwd%TYPE
 )
 IS
 	err_pwd_length_ovf EXCEPTION;
@@ -127,7 +127,7 @@ BEGIN
 		THEN RAISE err_pwd_blank;
 	END IF;
 
-	UPDATE user_table SET pwd = input_pwd WHERE user_id = input_user_id;
+	UPDATE User_Table SET pwd = input_pwd WHERE user_id = input_user_id;
 	
 	EXCEPTION
 	WHEN err_pwd_length_ovf

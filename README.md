@@ -45,4 +45,4 @@
 - #### 데이터베이스 설계와 질의 & 데이터베이스 프로그래밍
   > ##### 데이터베이스(Oracle)를 활용한 프로그래밍 기법, [Notetaking](https://jaej-sohn.notion.site/d8e9af84dd30441d9b896dc6c92ef06a)
 - #### Final Project
-  > ##### 영화 예매 시스템 (고급 SQL, PL/SQL, stored procedure & function, trigger 등)
+  > ##### 영화 예매 시스템 (고급 SQL, PL/SQL, stored procedure & function, trigger 등) [(go to)](https://github.com/jaejlf/HW_Archive_3/tree/main/Database%20Programming/Final_Project)
